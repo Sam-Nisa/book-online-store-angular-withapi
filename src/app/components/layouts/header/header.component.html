@@ -1,0 +1,40 @@
+<div class="header-wrapper w-100 z-3 bg-white" [class.shadow-sm]="isScrolled">
+  <header id="app-header" class="c-container">
+    <div class="mx-3 pt-3 pb-0 pb-lg-3 d-flex gap-3 align-items-center justify-content-between justify-content-lg-center position-relative">
+      <div class="position-absolute start-0 top-50 translate-middle-y">
+        <form class="search-field-wrapper position-relative d-none d-lg-block">
+          <img ngSrc="/icons/search.svg" alt="search" width="20" height="20" class="position-absolute top-50 translate-middle-y end-0 me-3 z-n1"/>
+          <input name="q" type="text" [placeholder]="'search' | translate" [class]="'border rounded-pill bg-transparent ' + (isScrolled ? 'onScrolled' : null)" autocomplete="off"/>
+        </form>
+      </div>
+      <a routerLink="/home" class="logo-wrapper d-flex gap-2 gap-sm-3 justify-content-center align-items-center text-decoration-none">
+        <img ngSrc="/svg/app-logo.svg" alt="app-logo" width="56" height="56"/>
+        <h3 class="text-black fw-bold">LTNG SPORTS</h3>
+      </a>
+      <div class="action-wrapper d-flex justify-content-end align-items-center gap-0 gap-lg-2">
+        <button mat-icon-button class="d-block d-lg-none" (click)="openDialog()">
+          <img ngSrc="/icons/search.svg" alt="search" width="20" height="20" class="w-75"/>
+        </button>
+        @if (!user()) {
+          <button class="fw-semibold action-btn text-primary align-content-center login" routerLink="/auth/login" [queryParams]="{returnUrl}">{{ "log_in" | translate }}</button>
+        }  @else {
+          <button class="action-btn me-2" routerLink="/bookmark">
+            <img ngSrc="/icons/saved.svg" alt="saved" width="20" height="20"/>
+            <span class="d-none d-lg-block">{{ "saved" | translate }}</span>
+          </button>
+          <img [src]="avatar" alt="" width="46" height="46" class="rounded-circle object-fit-cover" [matMenuTriggerFor]="menu" (error)="onImageError()"/>
+          <mat-menu #menu="matMenu" xPosition="before" class="mt-2 bg-white shadow">
+            <p class="px-3" readonly="true">{{ user().name }}</p>
+            <button mat-menu-item (click)="onLogout()">
+              <mat-icon size="3">logout</mat-icon>
+              <span>{{ "log_out" | translate }}</span>
+            </button>
+          </mat-menu>
+        }
+      </div>
+    </div>
+    <div class="menu-wrapper mx-0 mx-lg-3 px-3 px-lg-0 d-flex flex-nowrap overflow-y-auto gap-2 gap-lg-4 justify-content-lg-center align-items-center py-2 py-lg-0 list-unstyled" [class.border-bottom-0]="isScrolled">
+      <button *ngFor="let menu of menus" class="menu-item flex-shrink-0 target-link" [class.active]="checkIsActive(activeMenuRoute, menu.route)" (click)="onMenuClick(menu.route, menu._id)">{{ menu.title[currentLang()] }}</button>
+    </div>
+  </header>
+</div>

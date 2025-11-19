@@ -1,0 +1,215 @@
+:root {
+  --header-height: 164px;
+}
+
+.header-wrapper {
+  transition: all 0.2s ease;
+}
+
+#app-header {
+  transition: all 0.2s ease;
+  min-height: var(--header-height);
+
+  @media screen and (max-width: 576px) {
+    --header-height: 120px;
+  }
+
+  .search-field-wrapper {
+    @keyframes search-tip {
+      from {
+        right: 5px;
+        visibility: hidden;
+      }
+      to {
+        right: 0;
+        visibility: visible;
+      }
+    }
+
+    &::after {
+      visibility: hidden;
+      position: absolute;
+      content: 'Press Enter to confirm search';
+      padding: 8px;
+      background-color: rgba(0, 0, 0);
+      height: auto;
+      width: auto;
+      bottom: -100%;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    &:focus-within::after {
+      animation: search-tip 0.3s ease forwards;
+    }
+
+    input {
+      position: relative;
+      box-shadow: unset;
+      outline: unset;
+      height: 48px;
+      padding: 0 20px;
+      width: 280px;
+      transition: all 0.3s ease;
+
+      &.onScrolled, &:focus {
+        width: 327px;
+
+
+      }
+    }
+  }
+
+  .logo-wrapper {
+    img {
+      width: 56px;
+      height: auto;
+    }
+
+    h3 {
+      font-size: 25px;
+    }
+
+    @media screen and (max-width: 576px) {
+      img {
+        width: 46px;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .action-wrapper {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @media screen and (max-width: 992px) {
+      position: static;
+      right: unset;
+      top: unset;
+      transform: unset;
+    }
+
+    .action-btn {
+      min-height: 50px;
+      cursor: pointer;
+      padding: 6px 20px;
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #EEEEEE;
+      border-radius: 50rem;
+      background-color: transparent;
+
+      &.login {
+        border-color: transparent;
+        min-height: 40px;
+
+        &:hover {
+          background-color: rgba(238, 238, 238);
+        }
+      }
+
+      &:hover {
+        background-color: rgba(238, 238, 238, 0.3);
+      }
+
+      @media screen and (max-width: 992px) {
+        border-color: transparent;
+        min-height: 36px;
+        width: 36px;
+        padding: unset;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.10);
+        }
+
+        &.login {
+          width: unset;
+          padding: 6px 12px;
+        }
+      }
+    }
+  }
+
+  button {
+    &.target-link {
+      position: relative;
+      cursor: pointer;
+      padding: 10px 0;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      min-height: 34px;
+      align-content: center;
+      text-decoration: none;
+      text-underline-offset: 4px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #000;
+
+      @media screen and (min-width: 992px) {
+        &::before {
+          height: 4px;
+          border-radius: 4px;
+        }
+
+        &:hover::before {
+          transform-origin: left;
+          transform: scaleX(1);
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        min-height: 33px;
+        background-color: #f2f2f7;
+        text-underline-offset: unset;
+        text-decoration: none;
+        font-size: 14px;
+        padding: 3px 12px;
+        color: #8e8e93;
+        border: 1px solid #8e8e93;
+        border-radius: 50rem;
+
+        &::before {
+          display: none;
+        }
+
+        &:not(.active):hover {
+          text-decoration: none;
+          background-color: transparent;
+        }
+
+        &.active {
+          text-decoration: none;
+          color: #fff;
+          border-color: #0065D0;
+          background-color: #0065D0;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        font-size: 12px;
+        min-height: 30px;
+      }
+    }
+  }
+
+  .menu-wrapper {
+    border-bottom: 1px solid rgba(#000, 0.15);
+    border-top: 1px solid rgba(#000, 0.15);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media screen and (max-width: 992px) {
+      border-color: transparent;
+    }
+  }
+}
