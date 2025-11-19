@@ -23,7 +23,7 @@ export class SeoService {
                    title = 'LTNG News',
                    description = 'High level experience in web design and development knowledge, producing quality work.',
                    image = 'https://ik.imagekit.io/ltngmedia/LTNG/NEWS/common/logo_aEmInCnx_.png',
-                   url = environment.appUrl
+                   url = environment.apiBaseUrl
                  }: SeoProps) {
     if (!title) return;
 
