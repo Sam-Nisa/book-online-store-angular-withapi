@@ -1,120 +1,46 @@
-import {Component, Inject, Injector, OnInit, PLATFORM_ID, signal} from '@angular/core';
-import {isPlatformBrowser, NgForOf, NgOptimizedImage} from '@angular/common';
-import {Router, RouterLink} from '@angular/router';
-import {MenuItemModel} from '../../../types/menu-item';
-import {MatIconButton} from '@angular/material/button';
-import {fromEvent} from 'rxjs';
-import {AuthService} from '../../../services/auth.service';
-import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
-import {MatIcon} from '@angular/material/icon';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {BaseCrudService} from '../../../services/base-crud.service';
-import {CategoryProps} from '../../../types/category';
-import {LanguageEnum} from '../../../types/enums/language.enum';
-
-const MENUS: MenuItemModel[] = [
-  {
-    title: {
-      'en': 'Home',
-      'km': 'ទំព័រដើម'
-    },
-    route: 'home'
-  },
-  {
-    title: {
-      'en': 'Contact',
-      'km': 'ទំនាក់ទំនង'
-    },
-    route: 'contact'
-  }
-]
+import { Component, HostListener } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common'; // ✅ Add this
+import { categories } from '../../../constants/categories';
 
 @Component({
   selector: 'app-header',
-  imports: [
-    NgOptimizedImage,
-    RouterLink,
-    NgForOf,
-    MatIconButton,
-    MatMenu,
-    MatMenuTrigger,
-    MatMenuItem,
-    MatIcon,
-    TranslateModule,
-  ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,     // ✅ Needed for *ngFor, *ngIf
+    RouterModule,
+    TranslateModule
+  ]
 })
-export class HeaderComponent extends BaseCrudService<CategoryProps> implements OnInit {
-  private isBrowser: boolean;
-  avatar = '';
-  returnUrl: string = '';
-  menus: MenuItemModel[] = [];
-  prevScroll: number = 0;
-  isScrolled?: boolean;
-  activeMenuRoute = '';
-  user = signal<any>(null);
-  currentLang = signal<string>(LanguageEnum.EN);
+export class HeaderComponent {
+  isDropdownOpen = false;
+  categories = categories;
 
-  constructor(injector: Injector,
-              private authService: AuthService,
-              private router: Router,
-              protected translateService: TranslateService,
-              @Inject(PLATFORM_ID) private platformId: Object
-            ) {
-    super(injector);
-    this.isBrowser = isPlatformBrowser(this.platformId);
-    this.currentLang.set(this.translateService.currentLang);
-    this.translateService.onLangChange.subscribe(event => this.currentLang.set(event.lang));
-    this.activeMenuRoute = this.router.url.split('/')[1];
+  constructor(private router: Router) {}
 
-    if (this.authService.isAuth) {
-      this.authService.getProfile().subscribe((res) => {
-        this.avatar = res.avatar;
-        this.user.set(res);
-      });
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  closeDropdown() {
+    this.isDropdownOpen = false;
+  }
+
+  goToCategory(categoryId: number) {
+    this.router.navigate(['/category', categoryId]);
+    this.closeDropdown();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const dropdown = target.closest('.dropdown');
+
+    if (!dropdown && this.isDropdownOpen) {
+      this.isDropdownOpen = false;
     }
-  }
-
-  openDialog(): void {
-  }
-
-  ngOnInit() {
-    if (this.isBrowser) {
-      this.menus = MENUS;
-
-      fromEvent(window, 'scroll')
-        .subscribe(() => {
-          const appHeader = document.querySelector('app-header');
-          const currentScroll = window.scrollY;
-          this.isScrolled = currentScroll >= 16;
-          if (currentScroll > this.prevScroll && currentScroll > 164 && window.innerWidth <= 992)
-            appHeader?.classList.add('hide');
-          else
-            appHeader?.classList.remove('hide');
-          this.prevScroll = currentScroll;
-        });
-    }
-  }
-
-  onMenuClick(route: string, categoryId?: string) {
-    if (this.user() && categoryId) {
-      this.create(<any>{}).subscribe();
-    }
-    this.router.navigate([`/${route}`]);
-  }
-
-  onLogout() {
-    this.authService.logout();
-    this.user.set(null);
-  }
-
-  onImageError() {
-    this.avatar = '/imgs/avatar.png';
-  }
-
-
-  checkIsActive(param: string, route: string) {
-    return param === route;
   }
 }

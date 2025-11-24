@@ -1,0 +1,67 @@
+.mission-values-section {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  max-width: 1310px;
+  margin: 0 auto;
+  gap: 1.5rem;
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d171b;
+    dark-color: #f0f0f0;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    color: #4b5563; // slate-600
+    dark-color: #cbd5e1;
+    max-width: 800px;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    .value-card {
+      display: flex;
+      flex-direction: row;
+      gap: 0.75rem;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      dark-background-color: #1f2937;
+      dark-border-color: #374151;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      align-items: flex-start;
+
+      .value-icon {
+        font-size: 2rem;
+        color: #13a4ec;
+      }
+
+      .value-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        h3 {
+          font-size: 1rem;
+          font-weight: 600;
+          color: #0d171b;
+          dark-color: #f0f0f0;
+        }
+
+        p {
+          font-size: 0.875rem;
+          color: #6b7280; // slate-500
+          dark-color: #cbd5e1;
+        }
+      }
+    }
+  }
+}

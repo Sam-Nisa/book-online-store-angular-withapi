@@ -1,3 +1,39 @@
-<div>
-  <h2>Homepage</h2>
+<div class="px-1 w-100 h-100">
+  <div class="w-100 h-100 overflow-x-hidden overflow-y-auto pb-3">
+
+    <!-- Hero Banner Section -->
+    <app-hero-banner></app-hero-banner>
+
+    <!-- New Arrival -->
+    <div class="container mt-4">
+      <h2 class="title">New Arrival</h2>
+      <div class="card-grid">
+        <app-card [booksToShow]="newArrival"></app-card>
+      </div>
+    </div>
+
+    <!-- Browse Categories Section -->
+    <div class="container mt-4">
+      <h2 class="title">Browse by Genre</h2>
+      <app-category></app-category>
+    </div>
+
+    <!-- Recommended For You -->
+    <div class="container mt-4">
+      <h2 class="title">Recommended For You</h2>
+      <div class="card-grid">
+        <app-card [booksToShow]="recommended"></app-card>
+      </div>
+    </div>
+
+    <!--Reader feedback -->
+    <div class="container mt-4">
+      <div class="card-grid">
+         <app-feedback-reader></app-feedback-reader>
+      </div>
+    </div>
+
+    <!-- Router Outlet -->
+    <router-outlet></router-outlet>
+  </div>
 </div>

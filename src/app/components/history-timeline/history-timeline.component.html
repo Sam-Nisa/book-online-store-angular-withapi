@@ -1,0 +1,16 @@
+<section class="history-timeline-section flex flex-col">
+  <h2 class="section-title px-4 pb-3 pt-5">{{ sectionTitle }}</h2>
+  <div class="timeline-container relative flex flex-col p-4">
+    <div class="timeline-line absolute left-8 top-0 h-full w-0.5 bg-slate-200 dark:bg-slate-800"></div>
+
+    <div *ngFor="let event of timeline" class="timeline-event relative flex items-start gap-6">
+      <div class="timeline-icon flex size-10 flex-shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary">
+        <span class="material-symbols-outlined">{{ event.icon }}</span>
+      </div>
+      <div>
+        <h4 class="font-bold dark:text-slate-50">{{ event.year }}: {{ event.title }}</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-400">{{ event.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

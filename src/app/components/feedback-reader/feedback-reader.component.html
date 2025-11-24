@@ -1,0 +1,16 @@
+<section class="testimonials-section">
+  <h2 class="section-title">What Our Readers Say</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card" *ngFor="let t of feedbacks">
+      <div class="stars">
+        <ng-container *ngFor="let star of [1,2,3,4,5]">
+          <span class="material-symbols-outlined">
+            {{ star <= t.rating ? 'star' : (star - 0.5 === t.rating ? 'star_half' : 'star_outline') }}
+          </span>
+        </ng-container>
+      </div>
+      <blockquote>{{ t.message }}</blockquote>
+      <p class="author">- {{ t.author }}</p>
+    </div>
+  </div>
+</section>

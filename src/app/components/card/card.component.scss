@@ -1,0 +1,84 @@
+.cards-container {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1330px;
+  margin: 2rem auto;
+  grid-template-columns: repeat(1, 1fr); /* default 1 column for mobile */
+}
+
+/* Desktop overrides using Tailwind is enough, but you can add CSS fallback */
+@media (min-width: 640px) { /* sm */
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) { /* md */
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) { /* lg */
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Card Styling */
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-content {
+  padding: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.card-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.card-content p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.card-content .btn {
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.9rem;
+  border: 0;
+  background: #3173e6;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card-content .btn:hover {
+  background: #255cc4;
+}

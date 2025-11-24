@@ -1,0 +1,57 @@
+.cta-section {
+  background-color: #dbeafe; // light primary / Tailwind: primary/20
+  dark: {
+    background-color: #e0f2fe; // dark primary/10
+  }
+  border-radius: 0.5rem; // rounded-lg
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1280px;
+  margin: auto;
+  gap: 1rem;
+
+  .cta-title {
+    font-size: 1.5rem; // text-2xl
+    font-weight: 700; // font-bold
+    color: #0d171b;
+    dark: {
+      color: #f8fafc;
+    }
+  }
+
+  .cta-text {
+    max-width: 40rem; // max-w-xl
+    color: #4b5563; // slate-700
+    font-size: 1rem; // base
+    dark: {
+      color: #d1d5db; // slate-300
+    }
+  }
+
+  .cta-button {
+    min-width: 84px;
+    max-width: 480px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 0.5rem; // rounded-lg
+    height: 3rem; // h-12
+    padding: 0 1.25rem; // px-5
+    background-color: #13a4ec; // primary
+    color: #f8fafc; // slate-50
+    font-size: 1rem; // base
+    font-weight: 700; // font-bold
+    line-height: 1.5rem; // leading-normal
+    letter-spacing: 0.015em;
+    margin-top: 0.5rem;
+
+    &:hover {
+      background-color: darken(#13a4ec, 10%);
+    }
+  }
+}

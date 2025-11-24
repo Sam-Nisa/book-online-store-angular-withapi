@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {NgForOf, NgOptimizedImage} from '@angular/common';
+import { Component } from '@angular/core';
+import { NgForOf, NgOptimizedImage } from '@angular/common';
 
-const SOCIALS: { icon: string, url: string }[] = [
+const SOCIALS: { icon: string; url: string }[] = [
   {
     icon: '/icons/footer/facebook.svg',
     url: 'https://www.facebook.com/ltngnews'
@@ -9,6 +9,10 @@ const SOCIALS: { icon: string, url: string }[] = [
   {
     icon: '/icons/footer/telegram.svg',
     url: 'https://t.me/ltngnews157'
+  },
+  {
+    icon: '/icons/footer/instagram.svg',  // ✅ Instagram added
+    url: 'https://www.instagram.com/ltngnews'
   }
 ];
 
@@ -19,10 +23,10 @@ const SOCIALS: { icon: string, url: string }[] = [
     NgForOf
   ],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrls: ['./footer.component.scss'] // ✅ fix here
 })
 export class FooterComponent {
-  socials: { icon: string, url: string }[] = [];
+  socials: { icon: string; url: string }[] = [];
   phoneNumber: string;
   year: number = new Date().getFullYear();
 

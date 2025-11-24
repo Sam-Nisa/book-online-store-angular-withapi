@@ -1,0 +1,102 @@
+@if (book) {
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <a [routerLink]="'/'" class="breadcrumb-link">Home</a>
+    <span class="breadcrumb-separator">/</span>
+    <a [routerLink]="['/books', book?.categoryId]" class="breadcrumb-link">{{ categoryName }}</a>
+    <span class="breadcrumb-current">{{ book?.title }}</span>
+  </div>
+
+
+    <!-- Product Section -->
+    <section class="product-section" *ngIf="book">
+
+      <!-- Book Cover -->
+      <div class="book-cover-wrapper">
+        <div class="book-cover" [style.background-image]="'url(' + book.image + ')'"></div>
+      </div>
+
+      <!-- Book Details -->
+      <div class="book-details">
+        <h1 class="book-title">{{ book.title }}</h1>
+        <h2 class="book-author">by {{ book.author }}</h2>
+
+        <!-- Description -->
+        <p class="book-description">
+          {{ book.description }}
+        </p>
+
+        <!-- Price -->
+        <div class="price-wrapper">
+          <span class="current-price">{{ book.price | currency }}</span>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-wrapper">
+
+          <!-- Quantity Selector -->
+          <div class="quantity-selector">
+            <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
+            <input type="text" class="quantity-input" [value]="quantity" readonly>
+            <button class="quantity-btn" (click)="increaseQuantity()">+</button>
+          </div>
+
+          <!-- Add to Cart -->
+          <button class="btn-add-cart" (click)="addToCart()">
+            <span class="material-symbols-outlined">add_shopping_cart</span>
+            Add to Cart
+          </button>
+
+          <!-- Wishlist -->
+          <button class="btn-wishlist" (click)="toggleWishlist()">
+          <span class="material-symbols-outlined">
+            {{ isInWishlist ? 'favorite' : 'favorite_border' }}
+          </span>
+          </button>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Book Not Found -->
+    <div class="not-found" *ngIf="!book">
+      <h2>Book not found</h2>
+      <a routerLink="/home" class="btn-back">Go back to home</a>
+    </div>
+
+    <!-- Tabs Section -->
+    <section class="tabs-section" *ngIf="book">
+      <nav class="tabs-nav">
+        <a class="tab-link" [class.active]="activeTab === 'description'" (click)="setActiveTab('description')">Description</a>
+        <a class="tab-link" [class.active]="activeTab === 'details'" (click)="setActiveTab('details')">Product Details</a>
+        <a class="tab-link" [class.active]="activeTab === 'author'" (click)="setActiveTab('author')">About the Author</a>
+      </nav>
+
+      <!-- Description Tab -->
+      <div class="tab-content" *ngIf="activeTab === 'description'">
+        <p>{{ book.description }}</p>
+      </div>
+
+      <!-- Product Details Tab -->
+      <div class="tab-content" *ngIf="activeTab === 'details'">
+        <p>{{ book.productDetail }}</p>
+      </div>
+
+      <!-- About Author Tab -->
+      <div class="tab-content" *ngIf="activeTab === 'author'">
+        <p>{{ book.aboutAuthor }}</p>
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+} @else {
+  <div>Book not found!</div>
+}

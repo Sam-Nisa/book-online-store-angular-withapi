@@ -1,0 +1,60 @@
+.marketing-block {
+  // Container styling
+  background-color: gray;
+  color: white; // Ensure text is readable against the gray background
+  margin: 0;
+  padding: 0;
+
+  // Styling for the title (H3)
+  .marketing-title {
+    // CRUCIAL: Removes default margin/padding from the H3 tag
+    margin: 0;
+    padding: 0;
+    line-height: 1.2; // Adjusts line height to compress vertical space
+    font-size: 1.5em;
+  }
+
+  // Styling for the description (P)
+  .marketing-description {
+    // CRUCIAL: Removes default margin/padding from the P tag
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    font-size: 1em;
+  }
+}
+
+
+// card
+.container {
+  max-width: 1330px;
+  margin: 20px auto;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 20px 0 0px 15px;
+  color: var(--text-color, #111);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+

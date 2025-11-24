@@ -1,0 +1,57 @@
+.history-timeline-section {
+  .section-title {
+    max-width: 1310px;
+    margin: 0 auto; // center the title
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.3;
+    color: #0d171b;
+    dark: { color: #f8fafc; }
+  }
+
+  .timeline-container {
+    position: relative;
+    max-width: 1280px; // ✅ constrain content width
+    margin: 0 auto;    // ✅ center container horizontally
+    padding: 1rem;     // same as your p-4
+
+    .timeline-line {
+      position: absolute;
+      left: 2rem; // keep left alignment
+      width: 2px;
+      background-color: #e2e8f0;
+      dark: { background-color: #1f2937; }
+      top: 0;
+      height: 100%;
+    }
+
+    .timeline-event {
+      display: flex;
+      align-items: start;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+
+      .timeline-icon {
+        width: 2.5rem; // size-10
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgba(19, 164, 236, 0.2);
+        color: #13a4ec;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 0.875rem; // text-sm
+        color: #4b5563;
+        dark: { color: #9ca3af; }
+      }
+    }
+  }
+}

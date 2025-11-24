@@ -1,0 +1,9 @@
+<section class="genre-section">
+
+  <div class="genre-grid">
+    <div class="genre-card" *ngFor="let category of categoryToShow" [routerLink]="'/category/' + category.id">
+      <span class="material-symbols-outlined">{{ category.icon }}</span>
+      <p>{{ category.name }}</p>
+    </div>
+  </div>
+</section>
