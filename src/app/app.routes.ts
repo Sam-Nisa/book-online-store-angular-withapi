@@ -34,6 +34,14 @@ export const routes: Routes = [
         loadComponent:()=>import('./routes/faq/routes/faq.component').then(c => c.FaqComponent)
       },
       {
+        path: 'privacy-policy',
+        loadComponent:()=>import('./routes/privacy-policy/routes/privacy-policy.component').then(c => c.PrivacyPolicyComponent)
+      },
+      {
+        path: 'terms',
+        loadComponent:()=>import('./routes/terms/routes/terms.component').then(c => c.TermsComponent)
+      },
+      {
         path: 'bestseller',
         loadChildren: () => import('./routes/bestseller/manage-best-seller-routes').then(m => m.manageBestSellerRoutes)
       },
