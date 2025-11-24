@@ -1,0 +1,177 @@
+// Colors
+$primary: #135bec;
+$dark-bg: #101622;
+$light-bg: #f6f6f8;
+$text-dark: #111318;
+$text-light: #ffffff;
+$subtext: #616f89;
+
+// ---------------------------------------
+// HERO SECTION
+// ---------------------------------------
+.hero-section {
+  max-width: 1280px;
+  min-height: 480px;
+  margin: auto;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.55)),
+    url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8qx0_Sa1ITC7aKGogH8b2AtOV3rFwDrGpjmrIQhanbd2l2MC57GG0MFsret6uUkeow1Xycil0e_Ml8e2DCuDvbau2Sh1B3hVINFRx4zef7pPuKLoK1FZ3sQvC6xLYGUbu9PYOWXmgo-ZBXsrYA8t6F45JZCEIM3CF9YNyrZWOpdn_kPPc2ZRiQ8ZBH0J9hILJJ5FDEUT93u_dIDiujmWQfeLm22JDYG1MutKY_vxWcZKTHGIv5A-eeTjq1SbebAi2Y-0ST38SrQBC")
+    center/cover no-repeat;
+
+  .hero-content {
+    max-width: 700px;
+    color: white;
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.8rem;
+      background: $primary;
+      color: white;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: 0.25s;
+
+      &:hover {
+        background: darken($primary, 7%);
+      }
+    }
+  }
+}
+
+// ---------------------------------------
+// WHY WORK HERE
+// ---------------------------------------
+.why-section {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  max-width: 1320px;
+  margin: auto;
+
+  .section-header {
+    max-width: 720px;
+    margin: auto;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: $text-dark;
+      margin-bottom: 0.7rem;
+    }
+
+    p {
+      color: $subtext;
+      font-size: 1rem;
+    }
+  }
+
+  .features-grid {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #dbdfe6;
+      padding: 1.4rem;
+      text-align: left;
+
+      span.material-symbols-outlined {
+        font-size: 28px;
+        color: $primary;
+        margin-bottom: 0.8rem;
+        display: block;
+      }
+
+      h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $text-dark;
+        margin-bottom: 0.4rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: $subtext;
+      }
+    }
+  }
+}
+
+// ---------------------------------------
+// CAROUSEL
+// ---------------------------------------
+.carousel {
+  overflow-x: auto;
+  padding: 2.5rem 0;
+  max-width: 1320px;
+  margin: auto;
+
+  .carousel-track {
+    display: flex;
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .carousel-card {
+    min-width: 295px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $text-dark;
+    }
+
+    p {
+      font-size: 0.85rem;
+      color: $subtext;
+    }
+  }
+
+  .carousel-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  // Images
+  .img-1 {
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSWcJISeCWG67nkhs5K7RxHFRkwpaMKZLfB59jxP0p8qmhILAMuWLFWzbjKYGXNh2Q1THGwqAJtU5ICaPyxJX-zbTJ7QfH-rTesK9OM424VJ7WxRGlhdntYtkXRcWdbGm6U5EhopOxNFG2KyUD8k8H0NkJLwk3XKQs86b4KN1iqYLI-wZHkyerShv832qqaQDj7a9hFnSGvNzA8gv79Lu7R-2y1Ksqx_p2qwlFuarTTMzaAU6o7flyNU7KtdpOL9SRvM2Hjh739WCf");
+  }
+  .img-2 {
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCg7D6aoyFvEhzwEYjoaDaBRNsjmU6DkOfgaW-PbyIkXNpQbW4WlItjOBbhogR7q4GR6C8gtXdp10eMGoH6lSUqmdxXwKCF2yGrVsE7wQ4-MenAAYuhIX40NkiN3o6XHmGsTbRO_ZWl4I8Od0SPnvQMqfKkVYr8WWKmXQDwThzyw_W4qQzZ8DXNftnL7jQOLmkcEnzroy8_OPXZe2VkMjdfs-0cTYfLwObgSErBU52F-4-1OiwdotAxoHSG_nKTLg-7qWXqT1qG9-xj");
+  }
+  .img-3 {
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRu0jLGeIjJigfdeJyfXbK_kaGdb3_-G9BVCiqFi0BbcZZ57qZOElpiykEm71m_a9OZRLXAkdNByUIhNKazXoqZH29Nehi0hOPVHArto_CmhFM2EgV9UsaZSpvkouD32EUPDwN3EnUfLqgAKZO2Gm9OJq7fRdLzPXm8c1XgE4ROdkoMyJqf3y4LUP-MFy8DabKGKqsm20tDpy_zKhjYiuo3hE4Zydpeb8psTYzDCMBm6mVOMBKnRbB3O9rOdd7x7n76C2GhTsItea1");
+  }
+  .img-4 {
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsiLB1LWBhf5iBl3g-sIk_KKZ2_QGeeOg-pJu04pP1m31Ep3vSdszpDzKhBxUXiMRHXhaMknIWuuEq2DDiN8BvnK4tJN7QSdjOjL6y0IBR0hY-6Jp5D3JczF7KuOkubm9D8-pmgbJQr-9kNkLvj6BzAUsvbdvDLwXYWFzflmSHrguRRMlFKgaoCwp3zbsWH04spZOAHIuQbxjtNCAKRUUl6Cok49CLosf_tIypiDUUVqL92-AoGBFsHxDDG8phcdzgbqnvf0iMxEIN");
+  }
+}

@@ -22,6 +22,18 @@ export const routes: Routes = [
         loadChildren: () => import('./routes/about-us/manage-about-us-routes').then(m => m.manageAboutUsRoutes)
       },
       {
+        path: 'contact-us',
+        loadComponent: () => import('./routes/contact-us/routes/contact-us.component').then(c => c.ContactUsComponent)
+      },
+      {
+        path: 'careers',
+        loadComponent: () => import('./routes/careers/routes/careers.component').then(c => c.CareersComponent)
+      },
+      {
+        path: 'faq',
+        loadComponent:()=>import('./routes/faq/routes/faq.component').then(c => c.FaqComponent)
+      },
+      {
         path: 'bestseller',
         loadChildren: () => import('./routes/bestseller/manage-best-seller-routes').then(m => m.manageBestSellerRoutes)
       },

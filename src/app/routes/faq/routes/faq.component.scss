@@ -1,0 +1,185 @@
+// -----------------------------------------
+// COLOR & FONT VARIABLES
+// -----------------------------------------
+$primary: #135bec;
+$bg-light: #f6f6f8;
+$bg-dark: #182130;
+$content-light: #ffffff;
+$text-light: #111318;
+$subtext-light: #616f89;
+$border-light: #e5e7eb;
+
+body {
+  font-family: 'Public Sans', sans-serif;
+}
+
+// -----------------------------------------
+// PAGE CONTAINER
+// -----------------------------------------
+.faq-page {
+  max-width: 850px;
+  margin: auto;
+  padding: 3rem 1.5rem;
+  color: $text-light;
+}
+
+// -----------------------------------------
+// PAGE HEADING
+// -----------------------------------------
+.page-heading {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  h1 {
+    font-size: 2.6rem;
+    font-weight: 900;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: $subtext-light;
+    font-size: 1.1rem;
+  }
+}
+
+// -----------------------------------------
+// SEARCH BAR
+// -----------------------------------------
+.search-bar {
+  margin-bottom: 2rem;
+
+  .search-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid $border-light;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    background: $content-light;
+
+    span {
+      margin-right: 0.6rem;
+      color: $subtext-light;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      outline: none;
+    }
+  }
+}
+
+// -----------------------------------------
+// CHIPS
+// -----------------------------------------
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+
+  .chip {
+    padding: 0.45rem 1.2rem;
+    border-radius: 9999px;
+    background: $content-light;
+    border: 1px solid $border-light;
+    cursor: pointer;
+    font-size: 0.9rem;
+
+    &.active {
+      background: $primary;
+      color: white;
+      border-color: $primary;
+    }
+
+    &:hover {
+      background: lighten($primary, 38%);
+    }
+  }
+}
+
+// -----------------------------------------
+// ACCORDION (DETAILS)
+// -----------------------------------------
+.faq-list {
+  details {
+    border-top: 1px solid $border-light;
+    padding: 1rem 0;
+    cursor: pointer;
+
+    summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+
+      span:first-child {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .expand-icon {
+        transition: transform 0.2s;
+      }
+    }
+
+    &[open] {
+      .expand-icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    p {
+      margin-top: 0.6rem;
+      color: $subtext-light;
+      line-height: 1.5;
+      max-width: 90%;
+    }
+  }
+
+  details:last-child {
+    border-bottom: 1px solid $border-light;
+  }
+}
+
+// -----------------------------------------
+// SUPPORT CTA
+// -----------------------------------------
+.faq-support-box {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid $border-light;
+  background: $content-light;
+
+  h3 {
+    font-size: 1.7rem;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    color: $subtext-light;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+
+  .btn-primary {
+    background: $primary;
+    color: white;
+    padding: 0.7rem 1.8rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background: darken($primary, 8%);
+    }
+  }
+}
