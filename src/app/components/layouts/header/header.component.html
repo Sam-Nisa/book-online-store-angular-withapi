@@ -2,9 +2,9 @@
   <div class="header-container">
     <!-- Logo + Nav -->
     <div class="header-left">
-      <a class="logo header-left" [routerLink]="'/'">
-        <span class="material-symbols-outlined header-left">import_contacts</span>
-        <h2 class="header-left">BookHaven</h2>
+      <a class="logo" [routerLink]="'/'">
+        <span class="material-symbols-outlined">import_contacts</span>
+        <h2>BookHaven</h2>
       </a>
 
       <nav class="nav-links">
@@ -24,7 +24,6 @@
             </ng-container>
           </div>
         </div>
-
         <a [routerLink]="'/bestseller'">Bestsellers</a>
         <a [routerLink]="'/about-us'">About Us</a>
       </nav>
@@ -46,6 +45,57 @@
 
         <button class="login" [routerLink]="'auth/login'">Login</button>
       </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+        <span class="material-symbols-outlined">{{ isMobileMenuOpen ? 'close' : 'menu' }}</span>
+      </button>
     </div>
   </div>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()"></div>
+
+  <!-- Mobile Navigation Sidebar -->
+  <nav class="mobile-navbar" [class.active]="isMobileMenuOpen">
+    <div class="mobile-header">
+      <a class="mobile-logo" [routerLink]="'/'" (click)="toggleMobileMenu()">
+        <span class="material-symbols-outlined">import_contacts</span>
+        <h2>BookHaven</h2>
+      </a>
+      <button class="close-btn" (click)="toggleMobileMenu()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div class="mobile-dropdown" [class.open]="isMobileDropdownOpen">
+      <div class="mobile-dropdown-trigger" (click)="toggleMobileDropdown()">
+        Browse Categories
+        <span class="material-symbols-outlined">expand_more</span>
+      </div>
+      <div class="mobile-dropdown-menu" [class.open]="isMobileDropdownOpen">
+        <ng-container *ngFor="let category of categories">
+          <button class="mobile-dropdown-link" (click)="goToCategory(category.id)">
+            <span class="material-symbols-outlined category-icon">{{ category.icon }}</span>
+            {{ category.name }}
+          </button>
+        </ng-container>
+      </div>
+    </div>
+
+    <a [routerLink]="'/bestseller'" class="mobile-nav-link" (click)="toggleMobileMenu()">Bestsellers</a>
+    <a [routerLink]="'/about-us'" class="mobile-nav-link" (click)="toggleMobileMenu()">About Us</a>
+
+    <!-- Mobile Actions -->
+    <div class="mobile-actions">
+      <div class="mobile-search">
+        <div class="search-icon">
+          <span class="material-symbols-outlined">search</span>
+        </div>
+        <input type="text" placeholder="Search books..." />
+      </div>
+      <button class="mobile-login" [routerLink]="'auth/login'" (click)="toggleMobileMenu()">Login</button>
+    </div>
+  </nav>
 </header>

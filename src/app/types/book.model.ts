@@ -1,12 +1,21 @@
-// Define the Book interface
 export interface Book {
   id: number;
-  image: string;
+  images: string;
   title: string;
-  author: string;
-  description: string;
+  authors: {
+    name: string;
+    birth_year: number;
+    death_year: number;
+  }[];
+  authorName?: string;
   price: number;
-  productDetail: string;
-  aboutAuthor: string;
-  categoryId: number;
+  summaries: string;
+  subjects: string[];
+  languages: string[];
+  categoryId?: number;
+
+  // optional fields for detail page
+  aboutAuthor?: string;
+  productDetail?: string;
+  description?: string;
 }

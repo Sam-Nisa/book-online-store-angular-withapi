@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { books } from '../../constants/book';
+import { BookService } from '../../services/book.service';
 import { Book } from '../../types/book.model';
 import { categories } from '../../constants/categories';
 
@@ -13,24 +13,31 @@ import { categories } from '../../constants/categories';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+
   book!: Book | undefined;
   categoryName: string = '';
   activeTab: string = 'description';
   quantity: number = 1;
   isInWishlist: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private bookService: BookService) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.book = books.find(b => b.id === id);
 
-    if (this.book) {
-      // @ts-ignore
-      const cat = categories.find(c => c.id === this.book.categoryId);
-      this.categoryName = cat ? cat.name : 'Unknown';
-    }
+    this.bookService.getBookById(id).subscribe({
+      next: (book) => {
+        this.book = book;
 
+        const cat = categories.find(c => c.id === (book.categoryId ?? -1));
+        this.categoryName = cat ? cat.name : 'Unknown';
+      },
+      error: () => {
+        console.error('Book not found with id:', id);
+        this.book = undefined;
+        this.categoryName = '';
+      }
+    });
   }
 
   setActiveTab(tab: string) { this.activeTab = tab; }

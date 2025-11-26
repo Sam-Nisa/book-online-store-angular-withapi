@@ -1,66 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CardComponent } from '../../../components/card/card.component';
-import { books } from '../../../constants/book';
-import { Book } from '../../../types/book.model';
-import { categories } from '../../../constants/categories';
-import {Category} from '../../../types/category.model';
-import { switchMap } from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
-import { of } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, RouterModule} from '@angular/router';
+import {CardComponent} from '../../../components/card/card.component';
+import {CommonModule} from '@angular/common';
+import {switchMap} from 'rxjs/operators';
+import {of} from 'rxjs';
+import {BookService} from '../../../services/book.service';
+import {Book} from '../../../types/book.model';
+import {categories} from '../../../constants/categories';
 
 @Component({
   selector: 'app-categoried-book',
 
   standalone: true,
-  imports: [CardComponent, CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    CardComponent,
+  ],
   templateUrl: './categoried-book.component.html',
   styleUrls: ['./categoried-book.component.scss']
 })
-class CategoriedBookComponent implements OnInit {
-  categoryId: string = '';
+export default class CategoriedBookComponent implements OnInit {
+
   categoryIdNum: number = 0;
   booksInCategory: Book[] = [];
   categoryName: string = '';
+  loading: boolean = true;
 
-  constructor(private route: ActivatedRoute) {
-
+  constructor(
+    private route: ActivatedRoute,
+    private bookService: BookService
+  ) {
   }
 
   ngOnInit() {
-
     this.route.paramMap.pipe(
-
       switchMap(params => {
         const idString = params.get('categoryId');
-        if (idString) {
-          this.categoryId = idString;
-          this.categoryIdNum = Number(idString);
+        this.categoryIdNum = Number(idString);
 
+        const category = categories.find(c => c.id === this.categoryIdNum);
+        this.categoryName = category ? category.name : 'Unknown Category';
 
-          this.loadCategoryData();
-        }
-
-        return of(null);
+        return this.bookService.getBooks(); // load all books
       })
-    ).subscribe();
+    )
+      .subscribe(books => {
+        // console.log(this.categoryIdNum, "this cate idd in ssr");
 
+        this.booksInCategory = books.filter(
+          b => b.categoryId === this.categoryIdNum
+        );
 
+        this.loading = false;
+      });
   }
-
-
-  loadCategoryData() {
-
-    this.booksInCategory = books.filter(book => book.categoryId === this.categoryIdNum);
-
-
-    const category = categories.find(c => c.id === this.categoryIdNum);
-    this.categoryName = category ? category.name : 'Unknown Category';
-
-    console.log(`Updated to category: ${this.categoryName} (${this.categoryIdNum})`);
-  }
-
-
 }
-
-export default CategoriedBookComponent

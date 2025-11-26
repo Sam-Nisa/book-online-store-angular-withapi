@@ -1,5 +1,6 @@
 <section class="testimonials-section">
   <h2 class="section-title">What Our Readers Say</h2>
+
   <div class="testimonials-grid">
     <div class="testimonial-card" *ngFor="let t of feedbacks">
       <div class="stars">
@@ -9,6 +10,7 @@
           </span>
         </ng-container>
       </div>
+
       <blockquote>{{ t.message }}</blockquote>
       <p class="author">- {{ t.author }}</p>
     </div>

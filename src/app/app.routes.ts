@@ -31,15 +31,15 @@ export const routes: Routes = [
       },
       {
         path: 'faq',
-        loadComponent:()=>import('./routes/faq/routes/faq.component').then(c => c.FaqComponent)
+        loadComponent: () => import('./routes/faq/routes/faq.component').then(c => c.FaqComponent)
       },
       {
         path: 'privacy-policy',
-        loadComponent:()=>import('./routes/privacy-policy/routes/privacy-policy.component').then(c => c.PrivacyPolicyComponent)
+        loadComponent: () => import('./routes/privacy-policy/routes/privacy-policy.component').then(c => c.PrivacyPolicyComponent)
       },
       {
-        path: 'terms',
-        loadComponent:()=>import('./routes/terms/routes/terms.component').then(c => c.TermsComponent)
+        path: 'term',
+        loadComponent: () => import('./routes/terms/routes/terms.component').then(c => c.TermsComponent)
       },
       {
         path: 'bestseller',
@@ -50,8 +50,8 @@ export const routes: Routes = [
         loadChildren: () => import('./routes/manage-detail/manage-detail-route').then(m => m.manageDetailRoute)
       },
       {
-        path:'category',
-        loadChildren:()=> import('./routes/categoried-book/manage-categoried-book-routes').then(m=>m.manageCategoriedBookRoutes)
+        path: 'category',
+        loadChildren: () => import('./routes/categoried-book/manage-categoried-book-routes').then(m => m.manageCategoriedBookRoutes)
       }
     ]
   }

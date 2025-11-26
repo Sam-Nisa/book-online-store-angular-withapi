@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common'; // ✅ Add this
+import { CommonModule } from '@angular/common';
 import { categories } from '../../../constants/categories';
 
 @Component({
@@ -10,13 +10,15 @@ import { categories } from '../../../constants/categories';
   styleUrls: ['./header.component.scss'],
   standalone: true,
   imports: [
-    CommonModule,     // ✅ Needed for *ngFor, *ngIf
+    CommonModule,
     RouterModule,
     TranslateModule
   ]
 })
 export class HeaderComponent {
   isDropdownOpen = false;
+  isMobileMenuOpen = false;
+  isMobileDropdownOpen = false;
   categories = categories;
 
   constructor(private router: Router) {}
@@ -29,9 +31,21 @@ export class HeaderComponent {
     this.isDropdownOpen = false;
   }
 
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    if (!this.isMobileMenuOpen) {
+      this.isMobileDropdownOpen = false;
+    }
+  }
+
+  toggleMobileDropdown() {
+    this.isMobileDropdownOpen = !this.isMobileDropdownOpen;
+  }
+
   goToCategory(categoryId: number) {
     this.router.navigate(['/category', categoryId]);
     this.closeDropdown();
+    this.isMobileMenuOpen = false;
   }
 
   @HostListener('document:click', ['$event'])

@@ -1,26 +1,8 @@
-// import {Component} from '@angular/core';
-// import {RouterOutlet} from '@angular/router';
-// import {PageHeadingComponent} from '../../../components/page-heading/page-heading.component';
-//
-// @Component({
-//   selector: 'app-bestseller',
-//   imports: [
-//     PageHeadingComponent,
-//     RouterOutlet
-//   ],
-//   templateUrl: './bestseller.component.html',
-//   styleUrl: './bestseller.component.scss'
-// })
-// export class BestsellerComponent {
-//
-// }
-
-// src/app/pages/bestseller/bestseller.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PageHeadingComponent } from '../../../components/page-heading/page-heading.component';
-import { CardComponent } from '../../../components/card/card.component'; // path to your card
-import { books } from '../../../constants/book'; // path to your books.ts
+import { CardComponent } from '../../../components/card/card.component';
+import { BookService } from '../../../services/book.service';
 import { Book } from '../../../types/book.model';
 
 @Component({
@@ -30,7 +12,16 @@ import { Book } from '../../../types/book.model';
   templateUrl: './bestseller.component.html',
   styleUrls: ['./bestseller.component.scss']
 })
-export class BestsellerComponent {
-  booksToShow: Book[] = books.slice(1, 20); // slice 16 books (index 4-19)
-}
+export class BestsellerComponent implements OnInit {
 
+  booksToShow: Book[] = [];
+
+  constructor(private bookService: BookService) {}
+
+  ngOnInit(): void {
+    this.bookService.getBooks().subscribe(books => {
+      // Slice the first 20 books as “bestsellers”
+      this.booksToShow = books.slice(0, 20);
+    });
+  }
+}

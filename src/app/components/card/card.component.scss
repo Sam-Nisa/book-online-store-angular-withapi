@@ -7,7 +7,7 @@
   grid-template-columns: repeat(1, 1fr); /* default 1 column for mobile */
 }
 
-/* Desktop overrides using Tailwind is enough, but you can add CSS fallback */
+/* Responsive grid */
 @media (min-width: 640px) { /* sm */
   .cards-container {
     grid-template-columns: repeat(2, 1fr);
@@ -32,10 +32,10 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .card:hover {
@@ -57,16 +57,31 @@
   gap: 0.15rem;
 }
 
+/* Title */
 .card-content h3 {
   font-size: 1.25rem;
   font-weight: 700;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  -webkit-line-clamp: 2; /* max 2 lines */
 }
 
+/* Description */
 .card-content p {
   color: #555;
   font-size: 0.95rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  -webkit-line-clamp: 2; /* max 2 lines */
 }
 
+/* Button */
 .card-content .btn {
   margin-top: 0.25rem;
   padding: 0.45rem 0.9rem;

@@ -1,16 +1,14 @@
-<div class="cards-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-     [@listAnimation]>
-  <div class="card" *ngFor="let book of booksToShow" [routerLink]="'/books/' + book.id">
-    <div class="card-image h-60 bg-cover bg-center rounded-lg"
-         [style.backgroundImage]="'url(' + book.image + ')'"></div>
+<div class="cards-container">
+  <div
+    class="card"
+    *ngFor="let book of booksToShow; let i = index"
+    [routerLink]="'/books/' + book.id">
 
-    <div class="card-content mt-4 flex flex-col">
-      <h3 class="text-lg font-semibold">{{ book.title }}</h3>
-      <p class="text-sm text-gray-600">{{ book.description }}</p>
-      <button class="btn mt-auto bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-              [routerLink]="['../book', book.id]">
-        View More
-      </button>
+    <div class="card-image" [style.backgroundImage]="'url(' + book.images + ')'"></div>
+    <div class="card-content">
+      <h3>{{ book.title }}</h3>
+      <p>{{ book.summaries }}</p>
+      <button class="btn" [routerLink]="['../book', book.id]">View More</button>
     </div>
   </div>
 </div>
