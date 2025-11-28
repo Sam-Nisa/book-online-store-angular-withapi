@@ -12,10 +12,9 @@ export interface Book {
   summaries: string;
   subjects: string[];
   languages: string[];
-  categoryId?: number;
+  categoryId?: number; //This number corresponds to the ID of a category defined in  categories constant
 
   // optional fields for detail page
   aboutAuthor?: string;
-  productDetail?: string;
   description?: string;
 }

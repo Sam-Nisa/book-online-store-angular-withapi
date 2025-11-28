@@ -48,9 +48,8 @@ export class BookService {
       summaries: item.summaries?.[0] || 'No summary available',
       subjects: item.subjects || [],
       languages: item.languages?.join(', ') || 'Unknown',
-      categoryId: Math.floor(Math.random() * 8) + 1,
+      categoryId: Math.floor(Math.random() * 8) + 1, // since API (gutendex.com) don't have categoryID. so ,randomly assign a categoryId between 1 and 8.
       description: item.subjects?.join(', ') || 'No description available',
-      productDetail: 'No product details available',
       authorName: item.authors?.length
         ? `${item.authors[0].name} `
         : 'No information available.'
@@ -63,6 +62,7 @@ export class BookService {
   // RANDOM PRICE GENERATOR
   // ============================
   private generatePrice(): number {
-    return Math.floor(Math.random() * 20) + 5; // price $5–$25
+    return Math.floor(Math.random() * 20) + 5; // price $5–$24
   }
+
 }

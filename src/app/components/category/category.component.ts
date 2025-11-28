@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NgFor } from '@angular/common';
-import { categories } from '../../constants/categories';
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {NgFor} from '@angular/common';
+import {categories} from '../../constants/categories';
 
 @Component({
   selector: 'app-category',

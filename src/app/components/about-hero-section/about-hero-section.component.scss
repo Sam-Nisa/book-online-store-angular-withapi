@@ -1,33 +1,36 @@
 .hero {
   display: flex;
-  justify-content: center; // center the hero-bg
-  padding: 0 1rem;         // optional side padding on small screens
+  justify-content: center;
+  padding: 0 1rem;
 
   .hero-bg {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 480px;
-    gap: 1.5rem;
 
     width: 100%;
-    max-width: 1280px;     // ✅ constrain hero-bg itself
+    max-width: 1280px;
+    min-height: 480px;
+
     padding: 1rem;
+    gap: 1.5rem;
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     border-radius: 0.5rem;
 
     @media (min-width: 480px) {
-      gap: 2rem;
       padding: 1.5rem;
+      gap: 2rem;
     }
 
     .hero-content {
-      text-align: center;
       width: 100%;
-      color: #ffffff;
+      text-align: center;
+      color: #fff;
 
       h1 {
         font-size: 2.5rem;

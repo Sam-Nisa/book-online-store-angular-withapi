@@ -1,7 +1,7 @@
-$p:#3173e6;$s:#FF9505;$n:#efeeee;$d:#333;
+$p: #6682b1;$s:#FF9505;$n:#efeeee;$d:#333;
 
-.header{position:sticky;top:0;background:rgba(246,245,245,.95);backdrop-filter:blur(6px);z-index:50;display:flex;justify-content:center}
-.header-container{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:1340px;padding:.75rem 2rem}
+.header{position:sticky;top:0;background:rgba(246,245,245,.95);backdrop-filter:blur(6px);z-index:50;display:flex;flex-direction:column;justify-content:center}
+.header-container{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:1360px;padding:.75rem 2rem;margin:0 auto}
 .header-left{display:flex;align-items:center;gap:2rem}
 .logo{display:flex;align-items:center;gap:.5rem;color:$d;text-decoration:none}
 .logo span{color:$p;font-size:1.875rem}
@@ -13,6 +13,11 @@ $p:#3173e6;$s:#FF9505;$n:#efeeee;$d:#333;
   .nav-links a::after,.dropdown-trigger::after{content:'';position:absolute;width:0;height:2px;bottom:0;left:0;background:$p;transition:width .3s}
   .nav-links a:hover,.dropdown-trigger:hover{color:$p}
   .nav-links a:hover::after,.dropdown-trigger:hover::after{width:100%}
+
+  /* Active state for navigation links */
+  .nav-links a.active{color:$p;font-weight:600}
+  .nav-links a.active::after{width:100%}
+
   .dropdown{position:relative}
   .dropdown-trigger{display:flex;align-items:center;gap:.25rem}
   .dropdown-icon{font-size:1.2rem;transition:transform .3s}
@@ -25,21 +30,88 @@ $p:#3173e6;$s:#FF9505;$n:#efeeee;$d:#333;
 }
 .header-right{display:flex;align-items:center;gap:1rem}
 .search{display:none}
-@media(min-width:1024px){
-  .search{display:flex;max-width:16rem;background:$n;border-radius:.5rem;  box-shadow: rgba(42, 84, 161, 0.48) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;}
-  .search input{flex:1;padding:.75rem;border:0;outline:0;background:0;color:$d}
-  .search input::placeholder{color:rgba($d,.6)}
-  .search-icon{padding:0.5rem; padding-top:13px;  color:rgba($d,.6)}
+
+// Desktop search (only visible on large screens)
+.desktop-search {
+  display: none;
+  @media(min-width:1024px){
+    display: flex;
+    max-width: 16rem;
+    background: $n;
+    border-radius: .5rem;
+    box-shadow: rgba(42, 84, 161, 0.48) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+    input{
+      flex: 1;
+      padding: .75rem;
+      border: 0;
+      outline: 0;
+      background: 0;
+      color: $d;
+
+      &::placeholder{
+        color: rgba($d,.6);
+      }
+    }
+
+    .search-icon{
+      padding: 0.5rem;
+      padding-top: 13px;
+      color: rgba($d,.6);
+    }
+  }
 }
+
+// iPad search container (visible between 768px and 1024px)
+.ipad-search-container {
+  display: none;
+
+  @media(min-width:768px) and (max-width:1023px) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 2rem 0.75rem 2rem;
+    border-bottom: 1px solid rgba($d, 0.1);
+  }
+
+  .ipad-search {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    background: $n;
+    border-radius: .5rem;
+    box-shadow: rgba(42, 84, 161, 0.48) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+    input{
+      flex: 1;
+      padding: .75rem;
+      border: 0;
+      outline: 0;
+      background: 0;
+      color: $d;
+
+      &::placeholder{
+        color: rgba($d,.6);
+      }
+    }
+
+    .search-icon{
+      padding: 0.5rem;
+      padding-top: 13px;
+      color: rgba($d,.6);
+    }
+  }
+}
+
 .auth-buttons{display:flex;gap:.5rem;align-items:center}
 .shopping-cart{cursor:pointer}
 .shopping-cart span{font-size:1.8rem;color:$p;padding:.5rem;transition:color .2s}
 .shopping-cart span:hover{color:darken($p,10%)}
-button.login{min-width:95px;height:2.5rem;padding:0 1rem;font-size:.875rem;font-weight:700;border-radius:.5rem;border:0;cursor:pointer;background:rgba($p,.2);color:$p;transition:all .2s;   box-shadow: rgba(42, 84, 161, 0.48) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;}
+button.login{min-width:95px;height:2.5rem;padding:0 1rem;font-size:.875rem;font-weight:700;border-radius:.5rem;border:0;cursor:pointer;background:rgba($p,.2);color:$p;transition:all .2s;box-shadow: rgba(42, 84, 161, 0.48) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;}
 button.login:hover{background:rgba($p,.3)}
 .mobile-menu-toggle{display:none;background:0;border:0;cursor:pointer;padding:.5rem;color:$d}
 .mobile-menu-toggle span{font-size:1.75rem}
-@media(max-width:767px){
+@media(max-width:768px){
   .mobile-menu-toggle{display:block}
 }
 .mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;opacity:0;visibility:hidden;transition:all .3s}
@@ -52,8 +124,13 @@ button.login:hover{background:rgba($p,.3)}
 .mobile-logo h2{font-size:1.125rem;font-weight:700}
 .close-btn{background:0;border:0;cursor:pointer;padding:.25rem;color:$d}
 .close-btn span{font-size:1.5rem}
-.mobile-nav-link{padding:14px 0;font-size:15px;font-weight:500;color:$d;text-decoration:none;border-bottom:1px solid rgba($d,.1);transition:color .2s}
+.mobile-nav-link{padding:14px 0;font-size:15px;font-weight:500;color:$d;text-decoration:none;border-bottom:1px solid rgba($d,.1);transition:color .2s;position:relative}
 .mobile-nav-link:hover{color:$p}
+
+/* Active state for mobile navigation links */
+.mobile-nav-link.active{color:$p;font-weight:600}
+.mobile-nav-link.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:60%;background:$p;border-radius:2px}
+
 .mobile-dropdown{border-bottom:1px solid rgba($d,.1)}
 .mobile-dropdown-trigger{display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-size:15px;font-weight:500;color:$d;cursor:pointer}
 .mobile-dropdown-trigger span{transition:transform .3s}
@@ -64,10 +141,10 @@ button.login:hover{background:rgba($p,.3)}
 .mobile-dropdown-link .category-icon{font-size:1.125rem;color:$p}
 .mobile-dropdown-link:hover{color:$p;padding-left:1.25rem}
 .mobile-actions{display:flex;flex-direction:column;gap:12px;margin-top:20px;padding-top:20px;border-top:1px solid rgba($d,.1)}
-.mobile-search{display:flex;background:$n;border-radius:.5rem;  box-shadow: rgb(42, 84, 161) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;}
+.mobile-search{display:flex;background:$n;border-radius:.5rem;box-shadow: rgb(42, 84, 161) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;}
 .mobile-search input{flex:1;padding:.75rem;border:0;outline:0;background:0;font-size:14px}
 .mobile-search input::placeholder{color:rgba($d,.6)}
-.mobile-search .search-icon{padding:0 .5rem;color:rgba($d,.6)}
+.mobile-search .search-icon{padding:0 .5rem; padding-top:10px;color:rgba($d,.6)}
 button.mobile-login{padding:12px 20px;font-size:14px;font-weight:700;border-radius:.5rem;border:0;cursor:pointer;background:rgba($p,.2);color:$p;transition:all .2s}
 button.mobile-login:hover{background:rgba($p,.3)}
 @media(max-width:767px){

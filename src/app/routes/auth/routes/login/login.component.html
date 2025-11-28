@@ -1,4 +1,10 @@
 <div class="login-container">
+  <!-- Back Button -->
+  <button class="back-button" [routerLink]="'/home'" aria-label="Back to homepage">
+    <span class="material-symbols-outlined">arrow_back</span>
+    <span class="back-text">Back to Home</span>
+  </button>
+
   <div class="login-card">
 
     <!-- Left Side - Image/Banner -->
@@ -87,7 +93,6 @@
         <div class="divider"><span>Or continue with</span></div>
 
         <!-- Social Login -->
-        <!-- Social Login -->
         <div class="social-buttons">
           <button type="button" class="social-btn">
             <svg width="20" height="20" viewBox="0 0 24 24">
@@ -109,7 +114,7 @@
         <!-- Sign Up Link -->
         <p class="signup-text">
           Don't have an account?
-          <a [routerLink]="'../register'" class="signup-link">Sign up for free</a>
+          <a [routerLink]="'/auth/register'" class="signup-link">Sign up for free</a>
         </p>
       </form>
     </div>

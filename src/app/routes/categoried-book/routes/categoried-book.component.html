@@ -1,6 +1,19 @@
 <div class="container mt-4">
   <h2 class="mb-3">{{ categoryName }}</h2>
-  <div class="card-grid">
+
+  <!-- Loading state -->
+  <ng-container *ngIf="loading">
+    <app-loading message="Loading ..."></app-loading>
+  </ng-container>
+
+  <!-- Books grid -->
+  <div class="card-grid" *ngIf="!loading && booksInCategory.length > 0">
     <app-card [booksToShow]="booksInCategory"></app-card>
+  </div>
+
+  <!-- Empty / not found state -->
+  <div *ngIf="!loading && booksInCategory.length === 0" class="not-found">
+    <h2>No books found in this category</h2>
+    <a routerLink="/home" class="btn-back">Go back to home</a>
   </div>
 </div>

@@ -49,6 +49,8 @@
     line-height: 1.5rem; // leading-normal
     letter-spacing: 0.015em;
     margin-top: 0.5rem;
+    border: none;
+    outline: none;
 
     &:hover {
       background-color: darken(#13a4ec, 10%);

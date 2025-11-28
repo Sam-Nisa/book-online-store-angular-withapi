@@ -1,10 +1,10 @@
 // Variables
-$primary-color: #0A4D68;
+$primary-color: #6ca1d5;
 $secondary-color: #FFC107;
 $text-color: #212529;
 $text-muted: #6C757D;
 $border-color: #dee2e6;
-$background-light: #F8F9FA;
+$background-light: #d52020;
 $background-white: #ffffff;
 
 // Container
@@ -251,9 +251,9 @@ $background-white: #ffffff;
   color: $text-muted;
 
   &:hover {
-    background-color: $background-light;
+    background-color: $primary-color;
     border-color: $primary-color;
-    color: $primary-color;
+    color: $background-light;
   }
 
   &:active {
@@ -360,6 +360,7 @@ $background-white: #ffffff;
     }
   }
 }
+
 
 // Animations
 @keyframes fadeIn {

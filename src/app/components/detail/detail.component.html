@@ -1,11 +1,13 @@
-<main class="container" *ngIf="book; else notFound">
 
+<!--Loading Book-->
+<app-loading *ngIf="loading" message="Loading ..."></app-loading>
+
+<main class="container" *ngIf="book; else loadingOrNotFound">
   <!-- Breadcrumbs -->
   <div class="breadcrumbs">
     <a [routerLink]="'/'" class="breadcrumb-link">Home</a>
     <span class="breadcrumb-separator">/</span>
     <a [routerLink]="['/books', book.categoryId]" class="breadcrumb-link">{{ categoryName }}</a>
-
     <span class="breadcrumb-current">{{ book.title }}</span>
   </div>
 
@@ -21,7 +23,7 @@
     <div class="book-details">
       <h1 class="book-title">{{ book.title }}</h1>
       <h2 class="book-author">
-        by {{ book.authorName}}
+        by {{ book.authorName }}
       </h2>
       <h2 class="book-author">Languages: {{ book.languages }}</h2>
 
@@ -84,29 +86,21 @@
 
     <!-- About Author Tab -->
     <div class="tab-content" *ngIf="activeTab === 'author'">
-
       <div *ngFor="let a of book.authors" class="author-box">
-
         <h3>{{ a.name }}</h3>
-
         <p *ngIf="a.birth_year">Born: {{ a.birth_year }}</p>
         <p *ngIf="a.death_year">Died: {{ a.death_year }}</p>
-
         <p *ngIf="!a.birth_year && !a.death_year">
           No birth/death info available.
         </p>
-
       </div>
-
     </div>
-
-
   </section>
-
 </main>
 
-<ng-template #notFound>
-  <div class="not-found">
+<ng-template #loadingOrNotFound>
+
+  <div *ngIf="!loading && !book" class="not-found">
     <h2>Book not found</h2>
     <a routerLink="/home" class="btn-back">Go back to home</a>
   </div>

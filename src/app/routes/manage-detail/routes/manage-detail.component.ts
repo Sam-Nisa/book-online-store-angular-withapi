@@ -14,6 +14,7 @@ import { BookService } from '../../../services/book.service';
 export class ManageDetailComponent implements OnInit {
 
   book!: Book | undefined;
+  loading = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,9 +27,18 @@ export class ManageDetailComponent implements OnInit {
       const id = Number(params['id']);
 
       // Fetch book from API instead of constants
-      this.bookService.getBookById(id).subscribe(apiBook => {
-        this.book = apiBook;
-      });
+      this.bookService.getBookById(id).subscribe(
+        {
+          next:apiBook => {
+            this.book = apiBook;
+            this.loading = false;
+          },
+          error : () => {
+            this.loading = false;
+          }
+        }
+
+      );
     });
   }
 }

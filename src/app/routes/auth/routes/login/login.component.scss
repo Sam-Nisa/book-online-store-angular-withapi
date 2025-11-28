@@ -5,7 +5,64 @@
   justify-content: center;
   padding: 1.5rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  //background: #f3f4f6;
+  position: relative;
+}
+
+// Back Button Styles
+.back-button {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+
+  &:hover {
+    background: #f9fafb;
+    border-color: #6893e1;
+    color: #6893e1;
+    transform: translateX(-4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: translateX(-2px);
+  }
+
+  .material-symbols-outlined {
+    font-size: 1.25rem;
+  }
+
+  .back-text {
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.625rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    justify-content: center;
+
+    .material-symbols-outlined {
+      margin: 0;
+    }
+  }
 }
 
 .login-card {
@@ -95,7 +152,7 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
   }
 }
 
@@ -240,7 +297,6 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  //box-shadow: 0 10px 15px -3px rgba(104, 147, 225, 0.3);
 
   &:hover {
     background: linear-gradient(to right, #3770d6, #637bdc);
@@ -250,6 +306,12 @@
 
   &:active {
     transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
   }
 }
 

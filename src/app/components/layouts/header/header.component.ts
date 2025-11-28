@@ -1,8 +1,8 @@
-import { Component, HostListener } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
-import { categories } from '../../../constants/categories';
+import {Component, HostListener} from '@angular/core';
+import {Router, RouterModule} from '@angular/router';
+import {TranslateModule} from '@ngx-translate/core';
+import {CommonModule} from '@angular/common';
+import {categories} from '../../../constants/categories';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +21,8 @@ export class HeaderComponent {
   isMobileDropdownOpen = false;
   categories = categories;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;

@@ -5,6 +5,7 @@
     <app-hero-banner></app-hero-banner>
 
     <!-- New Arrival -->
+    <app-loading *ngIf="loading" message="Loading ..."></app-loading>
     <div class="container mt-4">
       <h2 class="title">New Arrival</h2>
       <div class="card-grid">
@@ -19,6 +20,7 @@
     </div>
 
     <!-- Recommended For You -->
+    <app-loading *ngIf="loading" message="Loading ..."></app-loading>
     <div class="container mt-4">
       <h2 class="title">Recommended For You</h2>
       <div class="card-grid">
@@ -29,11 +31,16 @@
     <!--Reader feedback -->
     <div class="container mt-4">
       <div class="card-grid">
-         <app-feedback-reader></app-feedback-reader>
+        <app-feedback-reader></app-feedback-reader>
       </div>
     </div>
-
     <!-- Router Outlet -->
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<div *ngIf="!loading && newArrival.length === 0" class="not-found">
+  <h2>No new arrivals found</h2>
+</div>
+
+

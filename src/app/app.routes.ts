@@ -1,21 +1,15 @@
-// app-routing.module.ts
-import {Routes} from '@angular/router';
-import {RootContainerComponent} from './components/root-container/root-container.component';
-
+import { Routes } from '@angular/router';
+import { RootContainerComponent } from './components/root-container/root-container.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: RootContainerComponent,
+    component: RootContainerComponent, // This has header/footer
     children: [
-      {path: '', redirectTo: 'home', pathMatch: 'full'},
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
         path: 'home',
         loadChildren: () => import('./routes/home/manage-home-routes').then(m => m.manageHomeRoutes)
-      },
-      {
-        path: 'auth',
-        loadChildren: () => import('./routes/auth/manage-auth-route').then(m => m.authRoutes)
       },
       {
         path: 'about-us',
@@ -54,5 +48,10 @@ export const routes: Routes = [
         loadChildren: () => import('./routes/categoried-book/manage-categoried-book-routes').then(m => m.manageCategoriedBookRoutes)
       }
     ]
+  },
+  // Auth routes WITHOUT RootContainerComponent (no header/footer)
+  {
+    path: 'auth',
+    loadChildren: () => import('./routes/auth/manage-auth-route').then(m => m.authRoutes)
   }
 ];

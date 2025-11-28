@@ -1,99 +1,127 @@
 .cards-container {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
   max-width: 1330px;
   margin: 2rem auto;
-  grid-template-columns: repeat(1, 1fr); /* default 1 column for mobile */
+  grid-template-columns: repeat(1, 1fr);
 }
 
-/* Responsive grid */
-@media (min-width: 640px) { /* sm */
-  .cards-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* FIXED: 640px+ handles 2 columns (iPad/medium tablets) */
+@media (min-width: 640px) {
+  .cards-container { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (min-width: 768px) { /* md */
-  .cards-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* NEW: 992px+ handles 3 columns (Larger desktops) */
+@media (min-width: 992px) {
+  .cards-container { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (min-width: 1024px) { /* lg */
-  .cards-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
+/* ADJUSTED: 1200px+ handles 4 columns */
+@media (min-width: 1200px) {
+  .cards-container { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* Card Styling */
-.card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+/* --- Fancy Card Styling (Unchanged) --- */
+
+.fancy-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+.fancy-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Image & Overlay Styling (Unchanged) --- */
+
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
 }
 
 .card-image {
   width: 100%;
-  height: 200px;
+  height: 250px;
   background-size: cover;
   background-position: center;
+  transition: transform 0.4s ease;
 }
 
-.card-content {
-  padding: 0.65rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+.fancy-card:hover .card-image {
+  transform: scale(1.05);
 }
 
-/* Title */
-.card-content h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
-  -webkit-line-clamp: 2; /* max 2 lines */
-}
-
-/* Description */
-.card-content p {
-  color: #555;
-  font-size: 0.95rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
-  -webkit-line-clamp: 2; /* max 2 lines */
-}
-
-/* Button */
-.card-content .btn {
-  margin-top: 0.25rem;
-  padding: 0.45rem 0.9rem;
-  border: 0;
+.price-tag {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   background: #3173e6;
   color: white;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: 0.2s;
+  padding: 0.3rem 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 12px 0 0 0;
+  z-index: 10;
 }
 
-.card-content .btn:hover {
+
+
+/* --- Content Styling (Unchanged) --- */
+
+.card-content {
+  padding: 1rem 1.2rem;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #333;
+  margin: 0 0 0.4rem 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+.card-content p {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  margin-bottom: 0;
+}
+
+/* --- Footer & Button Styling (Unchanged) --- */
+
+.card-footer {
+  padding: 0 1.2rem 1.2rem;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: #3173e6;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.primary-btn:hover {
   background: #255cc4;
 }

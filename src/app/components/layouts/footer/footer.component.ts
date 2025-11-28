@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
-import { NgForOf, NgOptimizedImage } from '@angular/common';
+import {Component} from '@angular/core';
+import {NgForOf, NgOptimizedImage} from '@angular/common';
 import {RouterLink} from '@angular/router';
 
 const SOCIALS: { icon: string; url: string }[] = [
   {
     icon: '/icons/footer/facebook.svg',
-    url: 'https://www.facebook.com/profile.php?id=61577022316274'
+    url: 'https://www.facebook.com/'
   },
   {
     icon: '/icons/footer/telegram.svg',
-    url: 'https://www.facebook.com/profile.php?id=61577022316274'
+    url: 'https://www.facebook.com/'
   },
   {
     icon: '/icons/footer/instagram.svg',  // ✅ Instagram added
-    url: 'https://www.facebook.com/profile.php?id=61577022316274'
+    url: 'https://www.facebook.com/'
   }
 ];
 

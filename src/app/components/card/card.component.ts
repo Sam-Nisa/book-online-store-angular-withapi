@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { Book } from '../../types/book.model';
-import { NgFor } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import {Component, Input} from '@angular/core';
+import {Book} from '../../types/book.model';
+import {NgFor} from '@angular/common';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -12,4 +12,5 @@ import { RouterModule } from '@angular/router';
 })
 export class CardComponent {
   @Input() booksToShow: Book[] = [];
+
 }

@@ -7,7 +7,7 @@
         <h2>BookHaven</h2>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links d-none d-md-flex">
         <!-- Dropdown for Browse Categories -->
         <div class="dropdown" [class.open]="isDropdownOpen">
           <div class="dropdown-trigger" (click)="toggleDropdown()">
@@ -24,18 +24,18 @@
             </ng-container>
           </div>
         </div>
-        <a [routerLink]="'/bestseller'">Bestsellers</a>
-        <a [routerLink]="'/about-us'">About Us</a>
+        <a [routerLink]="'/bestseller'" routerLinkActive="active">Bestsellers</a>
+        <a [routerLink]="'/about-us'" routerLinkActive="active">About Us</a>
       </nav>
     </div>
 
     <!-- Search + Buttons -->
     <div class="header-right">
-      <div class="search">
+      <div class="search desktop-search">
         <div class="search-icon">
           <span class="material-symbols-outlined">search</span>
         </div>
-        <input type="text" placeholder="Search books..." />
+        <input type="text" placeholder="Search books..."/>
       </div>
 
       <div class="auth-buttons">
@@ -43,13 +43,23 @@
           <span class="material-symbols-outlined">shopping_cart</span>
         </div>
 
-        <button class="login" [routerLink]="'auth/login'">Login</button>
+        <button class="login" [routerLink]="'/auth/login'">Login</button>
       </div>
 
       <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+      <button class="mobile-menu-toggle d-md-none" (click)="toggleMobileMenu()">
         <span class="material-symbols-outlined">{{ isMobileMenuOpen ? 'close' : 'menu' }}</span>
       </button>
+    </div>
+  </div>
+
+  <!-- iPad Search Bar (shown between 768px and 1024px) -->
+  <div class="ipad-search-container">
+    <div class="search ipad-search">
+      <div class="search-icon">
+        <span class="material-symbols-outlined">search</span>
+      </div>
+      <input type="text" placeholder="Search books..."/>
     </div>
   </div>
 
@@ -57,7 +67,7 @@
   <div class="mobile-overlay" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()"></div>
 
   <!-- Mobile Navigation Sidebar -->
-  <nav class="mobile-navbar" [class.active]="isMobileMenuOpen">
+  <nav class="mobile-navbar d-flex d-md-none" [class.active]="isMobileMenuOpen">
     <div class="mobile-header">
       <a class="mobile-logo" [routerLink]="'/'" (click)="toggleMobileMenu()">
         <span class="material-symbols-outlined">import_contacts</span>
@@ -84,8 +94,8 @@
       </div>
     </div>
 
-    <a [routerLink]="'/bestseller'" class="mobile-nav-link" (click)="toggleMobileMenu()">Bestsellers</a>
-    <a [routerLink]="'/about-us'" class="mobile-nav-link" (click)="toggleMobileMenu()">About Us</a>
+    <a [routerLink]="'/bestseller'" routerLinkActive="active" class="mobile-nav-link" (click)="toggleMobileMenu()">Bestsellers</a>
+    <a [routerLink]="'/about-us'" routerLinkActive="active" class="mobile-nav-link" (click)="toggleMobileMenu()">About Us</a>
 
     <!-- Mobile Actions -->
     <div class="mobile-actions">
@@ -93,9 +103,9 @@
         <div class="search-icon">
           <span class="material-symbols-outlined">search</span>
         </div>
-        <input type="text" placeholder="Search books..." />
+        <input type="text" placeholder="Search books..."/>
       </div>
-      <button class="mobile-login" [routerLink]="'auth/login'" (click)="toggleMobileMenu()">Login</button>
+      <button class="mobile-login" [routerLink]="'/auth/login'" (click)="toggleMobileMenu()">Login</button>
     </div>
   </nav>
 </header>
