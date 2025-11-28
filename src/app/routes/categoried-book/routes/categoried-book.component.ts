@@ -15,7 +15,7 @@ import {LoadingComponent} from '../../../components/loading/loading.component';
     CommonModule,
     RouterModule,
     CardComponent,
-    LoadingComponent, // <-- Add this here
+    LoadingComponent,
   ],
   templateUrl: './categoried-book.component.html',
   styleUrls: ['./categoried-book.component.scss']

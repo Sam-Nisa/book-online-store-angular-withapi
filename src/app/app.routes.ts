@@ -1,12 +1,12 @@
-import { Routes } from '@angular/router';
-import { RootContainerComponent } from './components/root-container/root-container.component';
+import {Routes} from '@angular/router';
+import {RootContainerComponent} from './components/root-container/root-container.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: RootContainerComponent, // This has header/footer
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      {path: '', redirectTo: 'home', pathMatch: 'full'},
       {
         path: 'home',
         loadChildren: () => import('./routes/home/manage-home-routes').then(m => m.manageHomeRoutes)
