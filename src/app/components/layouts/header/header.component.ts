@@ -2,6 +2,7 @@ import {Component, HostListener} from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {categories} from '../../../constants/categories';
 
 @Component({
@@ -12,7 +13,8 @@ import {categories} from '../../../constants/categories';
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule
   ]
 })
 export class HeaderComponent {
@@ -20,6 +22,11 @@ export class HeaderComponent {
   isMobileMenuOpen = false;
   isMobileDropdownOpen = false;
   categories = categories;
+
+  // Search properties
+  searchQuery = '';
+  mobileSearchQuery = '';
+  ipadSearchQuery = '';
 
   constructor(private router: Router) {
   }
@@ -47,6 +54,58 @@ export class HeaderComponent {
     this.router.navigate(['/category', categoryId]);
     this.closeDropdown();
     this.isMobileMenuOpen = false;
+  }
+
+  // Search function for desktop
+  onSearch() {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/search'], {
+        queryParams: { q: this.searchQuery.trim() }
+      });
+      this.searchQuery = '';
+    }
+  }
+
+  // Search function for mobile
+  onMobileSearch() {
+    if (this.mobileSearchQuery.trim()) {
+      this.router.navigate(['/search'], {
+        queryParams: { q: this.mobileSearchQuery.trim() }
+      });
+      this.mobileSearchQuery = '';
+      this.toggleMobileMenu();
+    }
+  }
+
+  // Search function for iPad
+  onIpadSearch() {
+    if (this.ipadSearchQuery.trim()) {
+      this.router.navigate(['/search'], {
+        queryParams: { q: this.ipadSearchQuery.trim() }
+      });
+      this.ipadSearchQuery = '';
+    }
+  }
+
+  // Handle Enter key press for desktop search
+  onSearchKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.onSearch();
+    }
+  }
+
+  // Handle Enter key press for mobile search
+  onMobileSearchKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.onMobileSearch();
+    }
+  }
+
+  // Handle Enter key press for iPad search
+  onIpadSearchKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.onIpadSearch();
+    }
   }
 
   @HostListener('document:click', ['$event'])

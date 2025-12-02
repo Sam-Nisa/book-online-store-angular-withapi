@@ -56,6 +56,15 @@ export class BookService {
     };
   }
 
+  searchBooksByTitle(query: string): Observable<Book[]> {
+    const searchUrl = `${this.apiUrl}?search=${encodeURIComponent(query)}`;
+    return this.http.get<any>(searchUrl).pipe(
+      map(response =>
+        response.results.map((item: any) => this.transformBook(item))
+      )
+    );
+  }
+
 
   // ============================
   // RANDOM PRICE GENERATOR

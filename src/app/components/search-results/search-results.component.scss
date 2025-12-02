@@ -1,0 +1,212 @@
+.search-results-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 60vh;
+}
+
+.search-header {
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+
+  .search-query {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+
+    strong {
+      color: #2c3e50;
+    }
+  }
+
+  .results-count {
+    color: #888;
+    font-size: 0.95rem;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem 1rem;
+
+  p {
+    font-size: 1.2rem;
+    color: #666;
+
+    &::after {
+      content: '...';
+      animation: dots 1.5s steps(3, end) infinite;
+    }
+  }
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+.no-results {
+  text-align: center;
+  padding: 4rem 1rem;
+
+  .material-symbols-outlined {
+    font-size: 5rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    color: #555;
+  }
+
+  p {
+    color: #888;
+    font-size: 1.1rem;
+  }
+}
+
+// ========================================
+// YOUR EXACT CARD STYLES
+// ========================================
+
+.cards-container {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1330px;
+  margin: 2rem auto;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* FIXED: 640px+ handles 2 columns (iPad/medium tablets) */
+@media (min-width: 640px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* NEW: 992px+ handles 3 columns (Larger desktops) */
+@media (min-width: 992px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ADJUSTED: 1200px+ handles 4 columns */
+@media (min-width: 1200px) {
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Fancy Card Styling (Unchanged) --- */
+
+.fancy-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fancy-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Image & Overlay Styling (Unchanged) --- */
+
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+}
+
+.card-image {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+}
+
+.fancy-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.price-tag {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #3173e6;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 12px 0 0 0;
+  z-index: 10;
+}
+
+/* --- Content Styling (Unchanged) --- */
+
+.card-content {
+  padding: 1rem 1.2rem;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #333;
+  margin: 0 0 0.4rem 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+.card-content p {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  margin-bottom: 0;
+}
+
+/* --- Footer & Button Styling (Unchanged) --- */
+
+.card-footer {
+  padding: 0 1.2rem 1.2rem;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: #3173e6;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: #255cc4;
+}

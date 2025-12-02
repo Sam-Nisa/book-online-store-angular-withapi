@@ -1,0 +1,58 @@
+<div class="search-results-container">
+  <div class="search-header">
+    <h1>Search Results</h1>
+    <p class="search-query" *ngIf="searchQuery">
+      Showing results for: <strong>"{{ searchQuery }}"</strong>
+    </p>
+    <p class="results-count" *ngIf="!isLoading && books.length > 0">
+      Found {{ books.length }} book(s)
+    </p>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading" *ngIf="isLoading">
+    <p>Searching...</p>
+  </div>
+
+  <!-- No Results -->
+  <div class="no-results" *ngIf="noResults && !isLoading">
+    <span class="material-symbols-outlined">search_off</span>
+    <h2>No books found</h2>
+    <p>Try searching with different keywords</p>
+  </div>
+
+  <!-- Results using your card design -->
+  <div class="cards-container" *ngIf="!isLoading && books.length > 0">
+    <div
+      class="card fancy-card"
+      *ngFor="let book of books; let i = index">
+
+      <!-- Use a wrapper for positioning absolute elements (like the favorite icon) -->
+      <div class="card-image-wrapper" [routerLink]="'/books/' + book.id">
+
+        <!-- The Image Section -->
+        <div
+          class="card-image"
+          [style.backgroundImage]="'url(' + book.images + ')'">
+        </div>
+
+      </div>
+
+      <!-- Content Area -->
+      <div class="card-content">
+        <!-- Title -->
+        <h3 [routerLink]="'/books/' + book.id">{{ book.title }}</h3>
+
+        <!-- Summary / Description -->
+        <p>{{ book.summaries }}</p>
+      </div>
+
+      <!-- Action Bar / Footer -->
+      <div class="card-footer">
+        <button class="btn primary-btn" [routerLink]="['/books', book.id]">
+          View Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

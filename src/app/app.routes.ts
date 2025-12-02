@@ -46,10 +46,13 @@ export const routes: Routes = [
       {
         path: 'category',
         loadChildren: () => import('./routes/categoried-book/manage-categoried-book-routes').then(m => m.manageCategoriedBookRoutes)
+      },
+      {
+        path: 'search',
+        loadComponent: () => import('./components/search-results/search-results.component').then(c => c.SearchResultsComponent)
       }
     ]
   },
-  // Auth routes WITHOUT RootContainerComponent (no header/footer)
   {
     path: 'auth',
     loadChildren: () => import('./routes/auth/manage-auth-route').then(m => m.authRoutes)

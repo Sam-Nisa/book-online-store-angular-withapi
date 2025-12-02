@@ -32,10 +32,15 @@
     <!-- Search + Buttons -->
     <div class="header-right">
       <div class="search desktop-search">
-        <div class="search-icon">
+        <div class="search-icon" (click)="onSearch()">
           <span class="material-symbols-outlined">search</span>
         </div>
-        <input type="text" placeholder="Search books..."/>
+        <input
+          type="text"
+          placeholder="Search books..."
+          [(ngModel)]="searchQuery"
+          (keypress)="onSearchKeyPress($event)"
+        />
       </div>
 
       <div class="auth-buttons">
@@ -56,10 +61,15 @@
   <!-- iPad Search Bar (shown between 768px and 1024px) -->
   <div class="ipad-search-container">
     <div class="search ipad-search">
-      <div class="search-icon">
+      <div class="search-icon" (click)="onIpadSearch()">
         <span class="material-symbols-outlined">search</span>
       </div>
-      <input type="text" placeholder="Search books..."/>
+      <input
+        type="text"
+        placeholder="Search books..."
+        [(ngModel)]="ipadSearchQuery"
+        (keypress)="onIpadSearchKeyPress($event)"
+      />
     </div>
   </div>
 
@@ -100,10 +110,15 @@
     <!-- Mobile Actions -->
     <div class="mobile-actions">
       <div class="mobile-search">
-        <div class="search-icon">
+        <div class="search-icon" (click)="onMobileSearch()">
           <span class="material-symbols-outlined">search</span>
         </div>
-        <input type="text" placeholder="Search books..."/>
+        <input
+          type="text"
+          placeholder="Search books..."
+          [(ngModel)]="mobileSearchQuery"
+          (keypress)="onMobileSearchKeyPress($event)"
+        />
       </div>
       <button class="mobile-login" [routerLink]="'/auth/login'" (click)="toggleMobileMenu()">Login</button>
     </div>
