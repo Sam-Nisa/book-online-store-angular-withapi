@@ -17,6 +17,10 @@ $returned-color: #ccc911;
 $rejected-color: #dd2323;
 $canceled-color: #73777b;
 $draft-color: #ffcb42;
+$p: #6682b1;
+$s: #FF9505;
+$n: #efeeee;
+$d: #333;
 
 @mixin disable-select {
   user-select: none;

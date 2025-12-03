@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
+
 html,
 body {
   box-sizing: border-box;
@@ -176,3 +177,646 @@ swiper-container {
 swiper-slide {
   overflow: hidden;
 }
+
+
+
+/*================= Dark mode global class ================*/
+body.dark-mode {
+  background: #1a1a1a;
+  color: #f1f1f1;
+}
+
+/* Header */
+body.dark-mode .header {
+  background: rgba(20, 20, 20, 0.95);
+}
+
+/* Text & Links */
+body.dark-mode a,
+body.dark-mode .dropdown-trigger,
+body.dark-mode .mobile-nav-link {
+  color: #f1f1f1 !important;
+}
+
+/* Search inputs */
+body.dark-mode input {
+  background: #2a2a2a !important;
+  color: white !important;
+}
+
+/* Dropdown Menu */
+body.dark-mode .dropdown-menu {
+  background: #222 !important;
+  color: white;
+}
+
+/* Mobile navbar */
+body.dark-mode .mobile-navbar {
+  background: #222 !important;
+}
+.mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .5rem;
+  border-radius: .5rem;
+  font-size: 1.5rem;
+  transition: background .2s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+body.dark-mode .mode-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mode-toggle span {
+  font-size: 1.7rem;
+  color: $d;
+}
+
+body.dark-mode .mode-toggle span {
+  color: #f1f1f1;
+}
+
+
+/* ------------------ DARK MODE (GLOBAL) ------------------ */
+
+body.dark-mode header input,
+body.dark-mode .header input,
+body.dark-mode .search-box input {
+  background-color: #222 !important;
+  color: #ffffff !important; /* typed text becomes white */
+  border-color: #555 !important;
+}
+
+/* Placeholder text color */
+body.dark-mode header input::placeholder,
+body.dark-mode .header input::placeholder,
+body.dark-mode .search-box input::placeholder {
+  color: #cccccc !important; /* placeholder = light gray/white */
+}
+
+body.dark-mode {
+  background: #1a1a1a;
+  color: #f1f1f1;
+}
+
+body.dark-mode .header {
+  background: rgba(20, 20, 20, 0.95) !important;
+}
+
+body.dark-mode a,
+body.dark-mode .dropdown-trigger,
+body.dark-mode .mobile-nav-link {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode input {
+  background: #2a2a2a !important;
+  color: white !important;
+}
+
+
+body.dark-mode .dropdown-menu {
+  background: #222 !important;
+  color: white !important;
+}
+
+body.dark-mode .mobile-navbar {
+  background: #222 !important;
+}
+
+body.dark-mode .search-box input::placeholder {
+  color: #cccccc !important; /* placeholder = light gray/white */
+}
+
+
+/* Toggle button */
+.mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: .5rem;
+  border-radius: .5rem;
+  font-size: 1.5rem;
+  transition: background .2s;
+}
+
+.mode-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .mode-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mode-toggle span {
+  font-size: 1.7rem;
+  color: #333;
+}
+
+body.dark-mode .mode-toggle span {
+  color: #f1f1f1;
+}
+
+
+
+/* Mobile "Browse Categories" text */
+body.dark-mode .mobile-dropdown-trigger {
+  color: #f1f1f1 !important;
+}
+
+/* Optional: keep dropdown menu items white for readability */
+body.dark-mode .dropdown-menu button,
+body.dark-mode .mobile-dropdown-menu button {
+  color: white !important;
+}
+
+/* Optional: change icon color next to Browse Categories */
+body.dark-mode .header .dropdown-trigger .dropdown-icon,
+body.dark-mode .mobile-dropdown-trigger span {
+  color: #13a4ec !important;
+}
+
+/* Hamburger (mobile menu) icon color in dark mode */
+body.dark-mode .mobile-menu-toggle span {
+  color: #ffffff !important;
+}
+
+/* Close button inside mobile menu in dark mode */
+body.dark-mode .mobile-navbar .close-btn span {
+  color: #ffffff !important;
+}
+
+/* Optional: make the mobile logo icons white too */
+body.dark-mode .mobile-logo .material-symbols-outlined {
+  color: #ffffff !important;
+}
+
+
+/* ------------------ DARK MODE for Home Page Sections ------------------ */
+body.dark-mode {
+  /* Page background */
+  background-color: #1a1a1a !important;
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode .container {
+  background-color: transparent;
+}
+
+body.dark-mode .title {
+  color: #f1f1f1 !important;
+}
+
+/* New Arrival / Recommended / Category grid titles */
+body.dark-mode h2.title {
+  color: #f1f1f1 !important;
+}
+
+/* Cards (if card component uses a wrapper class, adjust as needed) */
+body.dark-mode .card-grid {
+  background-color: transparent !important;
+}
+
+/* Marketing block */
+body.dark-mode .marketing-block {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+body.dark-mode .marketing-title {
+  color: #fff !important;
+}
+
+body.dark-mode .marketing-description {
+  color: #ddd !important;
+}
+
+/* Feedback section */
+body.dark-mode app-feedback-reader,
+body.dark-mode .feedback-card {
+  background-color: #2a2a2a !important;
+  color: #f1f1f1 !important;
+}
+
+/* “No new arrivals found” text */
+body.dark-mode .not-found h2 {
+  color: #f1f1f1 !important;
+}
+
+/* Router-outlet container spacing background */
+body.dark-mode .px-1 {
+  background-color: #1a1a1a !important;
+}
+
+
+//Footer
+
+/* ============================
+   DARK MODE — FOOTER SOCIAL ICONS
+   ============================ */
+body.dark-mode .footer .social-icons a,
+body.dark-mode .footer .social-icons img {
+  color: #13a4ec !important; /* Bright blue for icons */
+  filter: brightness(1.2) !important; /* Makes image icons pop */
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+
+body.dark-mode .footer .social-icons a:hover,
+body.dark-mode .footer .social-icons img:hover {
+  color: #0a74da !important; /* Slightly darker blue on hover */
+  filter: brightness(1.4) !important;
+}
+
+body.dark-mode .footer {
+  background-color: #111 !important;
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode .footer h3 {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode .footer a {
+  color: #ddd !important;
+}
+
+body.dark-mode .footer a:hover {
+  color: #fff !important;
+}
+
+body.dark-mode .footer-bottom {
+  color: #ccc !important;
+}
+
+body.dark-mode .footer .social-icons a img {
+  filter: brightness(0) invert(1); /* make icons white */
+}
+
+/* ============================
+   DARK MODE — BOOK CARDS
+   ============================ */
+
+body.dark-mode .cards-container {
+  background-color: #1a1a1a !important;
+}
+
+body.dark-mode .fancy-card {
+  background: #2a2a2a !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
+body.dark-mode .fancy-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8) !important;
+  transform: translateY(-6px);
+}
+
+/* Card Title */
+body.dark-mode .card-content h3 {
+  color: #ffffff !important;
+}
+
+/* Card Description */
+body.dark-mode .card-content p {
+  color: #cccccc !important;
+}
+
+/* Card Footer */
+body.dark-mode .card-footer {
+  background: transparent !important;
+}
+
+/* Button in dark mode */
+body.dark-mode .primary-btn {
+  background: #444 !important;
+  color: #fff !important;
+  border: 1px solid #666 !important;
+}
+
+body.dark-mode .primary-btn:hover {
+  background: #666 !important;
+}
+
+/* Price tag */
+body.dark-mode .price-tag {
+  background: #555 !important;
+  color: #fff !important;
+}
+
+/* ============================
+   DARK MODE — TESTIMONIALS
+   ============================ */
+body.dark-mode .testimonials-section {
+  background-color: #1a1a1a; /* Dark background for the whole section */
+  color: #f1f1f1;
+
+  .section-title {
+    color: #f1f1f1;
+  }
+}
+body.dark-mode .testimonial-card code,
+body.dark-mode .testimonial-card  {
+  background-color: #2a2a2a !important; /* Darker background for code */
+  box-shadow: #f6f5f5 1px 1px 1px;
+}
+body.dark-mode .testimonial-card blockquote,
+body.dark-mode .testimonial-card p.author {
+  color: white !important;
+}
+
+/* ============================
+   DARK MODE —Genre section in homepage
+   ============================ */
+/* Dark mode for genre section */
+body.dark-mode .genre-section {
+  background-color: #121212;
+  color: white;
+}
+
+/* Dark mode for each genre card */
+body.dark-mode .genre-card {
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #333;
+  transition: background-color 0.3s;
+}
+
+/* Keep category text white */
+body.dark-mode .genre-card p {
+  color: white !important;
+}
+
+/* Hover effect in dark mode */
+body.dark-mode .genre-card:hover {
+  background-color: #2a2a2a; /* Slightly lighter dark, NOT white */
+  cursor: pointer;
+}
+
+/* ============================
+   DARK MODE —mission about us page
+   ============================ */
+/* Dark mode for value cards */
+body.dark-mode .mission-values-section .value-card {
+  background-color: #1a1a1a !important; /* Dark card background */
+}
+
+/* Keep text inside cards white */
+body.dark-mode .mission-values-section .value-card h3,
+body.dark-mode .mission-values-section .value-card p {
+  color: white !important;
+}
+
+/* ============================
+   DARK MODE —Meet the team about us page
+   ============================ */
+
+/* Dark mode for value cards */
+body.dark-mode .team-card {
+  background-color: #1a1a1a !important; /* Dark card background */
+}
+
+body.dark-mode .meet-team-section .section-title {
+  color: white !important; /* Dark card background */
+}
+
+/* Keep text inside cards white */
+body.dark-mode .meet-team-section .section-title h2,
+body.dark-mode .meet-team-section .team-name,
+body.dark-mode .meet-team-section .team-quote{
+  color: white !important;
+}
+
+
+/* ============================
+   DARK MODE —Meet the team about us page
+   ============================ */
+/* Dark mode for CTA section */
+body.dark-mode .cta-section {
+  background-color: #2a2a2a; /* Dark gray background */
+             /* White text */
+}
+
+/* CTA title and text */
+body.dark-mode .cta-section .cta-title,
+body.dark-mode .cta-section .cta-text {
+  color: white !important;
+}
+
+/* CTA button in dark mode */
+body.dark-mode .cta-section .cta-button {
+  background-color: #444 !important;    /* Dark button background */
+  color: white;              /* Button text white */
+
+}
+
+
+/* ============================
+   DARK MODE —Meet the team about us page
+   ============================ */
+
+
+/* Main container */
+body.dark-mode main.container {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+}
+
+/* Breadcrumbs */
+body.dark-mode .breadcrumbs a,
+body.dark-mode .breadcrumbs span {
+  color: #f1f1f1 !important;
+}
+
+/* Book title, author, languages, description */
+body.dark-mode .book-title,
+body.dark-mode .book-author,
+body.dark-mode .book-description {
+  color: #f1f1f1;
+}
+
+/* Price */
+body.dark-mode .price-wrapper .current-price{
+  color: #13a4ec !important; /* optional: make price stand out */
+}
+
+/* Book title in dark mode */
+body.dark-mode .book-details .book-title {
+  color: #f6f5f5 !important; /* same as price color */
+}
+
+/* Actions (buttons) */
+body.dark-mode .btn-add-cart,
+body.dark-mode .btn-wishlist,
+body.dark-mode .quantity-btn {
+  background-color: #222;
+  color: #f1f1f1;
+  border: 1px solid #555;
+}
+
+body.dark-mode .btn-add-cart:hover,
+body.dark-mode .btn-wishlist:hover,
+body.dark-mode .quantity-btn:hover {
+  background-color: #333;
+}
+
+/* Quantity input background in dark mode */
+body.dark-mode .quantity-selector .quantity-input {
+  background-color: #13a4ec !important;
+  color: #ffffff !important; /* make text readable */
+}
+body.dark-mode .tabs-nav .tab-link.active {
+  border-bottom: 2px solid #13a4ec; /* active tab underline */
+}
+/* Tab content */
+body.dark-mode .tab-content {
+  background-color: #222;
+  color: #f1f1f1;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Author box */
+body.dark-mode .author-box {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #333;
+}
+
+/* Not found page */
+body.dark-mode .not-found {
+  background-color: #222;
+  color: #f1f1f1;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+body.dark-mode .btn-back {
+  background-color: #13a4ec;
+  color: #fff;
+}
+
+/* ============================
+   DARK MODE — LOGIN PAGE
+   ============================ */
+
+
+body.dark-mode .back-button:hover {
+  color: #13a4ec !important;
+}
+body.dark-mode .back-button .material-symbols-outlined {
+  color: #f1f1f1 !important;
+}
+
+/* Right side - form */
+body.dark-mode .login-form {
+  background-color: #111 !important;
+  flex: 1;
+  padding: 2rem;
+  color: #f1f1f1;
+}
+
+body.dark-mode .login-form h2,
+body.dark-mode .login-form p {
+  color: #f1f1f1 !important;
+}
+
+/* Form inputs */
+body.dark-mode .login-form input {
+  background-color: #222 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+}
+
+body.dark-mode .login-form input::placeholder {
+  color: #ccc !important;
+}
+
+body.dark-mode .forgot-link {
+  color: #13a4ec !important;
+}
+
+
+
+/* Social buttons */
+body.dark-mode .social-btn {
+  background-color: #222 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+body.dark-mode .signup-link {
+  color: #13a4ec !important;
+}
+
+body.dark-mode
+{
+  .login-container{
+    background: #111;
+  }
+
+}
+
+/* ------------------ DARK MODE — REGISTER PAGE ------------------ */
+
+/* Register card */
+body.dark-mode .register-card {
+  background-color: #111 !important;
+  color: #f1f1f1 !important;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+/* Right side - form */
+body.dark-mode .register-form {
+  background-color: #111 !important;
+  flex: 1;
+  padding: 2rem;
+  color: #f1f1f1 !important;
+}
+/* Form inputs */
+body.dark-mode .register-form input {
+  background-color: #222 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+}
+body.dark-mode .register-form input::placeholder {
+  color: #ccc !important;
+}
+/* Password toggle buttons */
+body.dark-mode .toggle-password {
+  background: transparent;
+  border: none;
+  color: #f1f1f1 !important;
+}
+/* Terms & conditions */
+body.dark-mode .terms-group .checkbox-label span,
+body.dark-mode .terms-link {
+  color: #f1f1f1 !important;
+}
+
+
+body.dark-mode
+{
+  .register-container{
+    background: #111;
+  }
+}
+body.dark-mode .form-header h2,
+body.dark-mode .form-header p {
+  color: #ffffff !important;
+}
+
+
+

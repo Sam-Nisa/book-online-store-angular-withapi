@@ -49,6 +49,13 @@
         </div>
 
         <button class="login" [routerLink]="'/auth/login'">Login</button>
+        <!-- Dark Mode Toggle -->
+        <button class="mode-toggle" (click)="toggleTheme()">
+  <span class="material-symbols-outlined">
+    {{ isDarkMode ? 'dark_mode' : 'light_mode' }}
+  </span>
+        </button>
+
       </div>
 
       <!-- Mobile Menu Toggle -->

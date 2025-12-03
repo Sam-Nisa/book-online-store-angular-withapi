@@ -117,4 +117,28 @@ export class HeaderComponent {
       this.isDropdownOpen = false;
     }
   }
+
+
+  isDarkMode = false;
+
+  ngOnInit() {
+    const savedMode = localStorage.getItem('theme');
+    if (savedMode === 'dark') {
+      this.isDarkMode = true;
+      document.body.classList.add('dark-mode');
+    }
+  }
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
 }

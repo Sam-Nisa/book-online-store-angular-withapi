@@ -9,9 +9,8 @@ $background-white: #ffffff;
 
 // Container
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  max-width: none;
+  margin: 0;
 }
 
 // Breadcrumbs
@@ -19,7 +18,7 @@ $background-white: #ffffff;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding: 1rem 0;
+  padding: 1rem 6rem;
 
   .breadcrumb-link {
     color: $text-muted;
@@ -294,7 +293,7 @@ $background-white: #ffffff;
 
 // Tabs Section
 .tabs-section {
-  padding: 3rem 0;
+  padding: 3rem 6rem;
 }
 
 .tabs-nav {
@@ -377,7 +376,7 @@ $background-white: #ffffff;
 // Responsive adjustments
 @media (max-width: 768px) {
   .container {
-    padding: 0 0.75rem;
+    padding: 0;
   }
 
   .product-section {
