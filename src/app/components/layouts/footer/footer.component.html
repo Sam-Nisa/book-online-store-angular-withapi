@@ -1,37 +1,49 @@
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-column">
-      <h3>Company</h3>
+      <h3>{{ 'footer.company' | translate }}</h3>
       <ul>
-        <li><a [routerLink]="'/about-us'">About Us</a></li>
-        <li><a [routerLink]="'/careers'">Careers</a></li>
+        <li><a [routerLink]="'/about-us'">{{ 'footer.about_us' | translate }}</a></li>
+        <li><a [routerLink]="'/careers'">{{ 'footer.careers' | translate }}</a></li>
       </ul>
     </div>
     <div class="footer-column">
-      <h3>Customer Service</h3>
+      <h3>{{ 'footer.customer_service' | translate }}</h3>
       <ul>
-        <li><a [routerLink]="'/contact-us'">Contact</a></li>
-        <li><a [routerLink]="'/faq'">FAQ</a></li>
+        <li><a [routerLink]="'/contact-us'">{{ 'footer.contact' | translate }}</a></li>
+        <li><a [routerLink]="'/faq'">{{ 'footer.faq' | translate }}</a></li>
       </ul>
     </div>
     <div class="footer-column">
-      <h3>Legal</h3>
+      <h3>{{ 'footer.legal' | translate }}</h3>
       <ul>
-        <li><a [routerLink]="'/privacy-policy'">Privacy Policy</a></li>
-        <li><a [routerLink]="'/term'">Terms of Service</a></li>
+        <li><a [routerLink]="'/privacy-policy'">{{ 'footer.privacy_policy' | translate }}</a></li>
+        <li><a [routerLink]="'/terms'">{{ 'footer.terms_of_service' | translate }}</a></li>
       </ul>
     </div>
     <div class="footer-column">
-      <h3>Follow Us</h3>
+      <h3>{{ 'footer.contact_us' | translate }}</h3>
+      <div class="contact-info">
+        <p>{{ 'footer.phone' | translate }}: <a [href]="'tel:' + phoneNumber">{{ phoneNumber }}</a></p>
+      </div>
       <div class="social-icons">
-        <a *ngFor="let social of socials" [href]="social.url" target="_blank" rel="noopener">
-          <img [ngSrc]="social.icon" width="24" height="24" alt="social icon"/>
-        </a>
+        <ng-container *ngFor="let social of socials">
+          <a *ngIf="getSocialPlatform(social.icon) as platform"
+             [href]="social.url"
+             target="_blank"
+             rel="noopener noreferrer"
+             [attr.aria-label]="'footer.social_media' | translate: { platform: platform }">
+            <img [ngSrc]="social.icon"
+                 width="24"
+                 height="24"
+                 [alt]="platform + ' icon'"
+                 loading="lazy">
+          </a>
+        </ng-container>
       </div>
     </div>
-
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 BookWorm. All rights reserved.</p>
+    <p>&copy; {{ year }} {{ 'footer.copyright' | translate }}</p>
   </div>
 </footer>

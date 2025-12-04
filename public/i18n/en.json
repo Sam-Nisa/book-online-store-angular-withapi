@@ -112,5 +112,21 @@
   },
   "errors": {
     "book_not_found": "Book not found"
+  },
+  "footer": {
+    "company": "Company",
+    "about_us": "About Us",
+    "careers": "Careers",
+    "customer_service": "Customer Service",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "legal": "Legal",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "follow_us": "Follow Us",
+    "contact_us": "Contact Us",
+    "phone": "Phone",
+    "social_media": "Follow us on {{ platform }}",
+    "copyright": "Sam Nisa. All rights reserved."
   }
 }
