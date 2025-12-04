@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, TranslateModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'] // FIXED: must be styleUrls, not styleUrl
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   email: string = '';
@@ -17,11 +18,10 @@ export class LoginComponent {
   showPassword: boolean = false;
   rememberMe: boolean = false;
 
-  // Add features if you are using *ngFor in HTML
   features: string[] = [
-    'Your personalized library',
-    'Continue where you left off',
-    'Sync across all devices'
+    'login.features.library',
+    'login.features.continue',
+    'login.features.sync'
   ];
 
   togglePasswordVisibility(): void {
@@ -29,12 +29,10 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    console.log('Login submitted', {
+    console.log('Login form submitted', {
       email: this.email,
-      password: this.password,
       rememberMe: this.rememberMe
+       // Note: In a real app, don't log passwords
     });
-    // Add your login logic here
   }
 }
-

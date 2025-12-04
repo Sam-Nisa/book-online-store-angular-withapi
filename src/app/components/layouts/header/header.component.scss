@@ -1,7 +1,8 @@
 $p: #6682b1;
-$s: #FF9505;
+// $s: #FF9505; <- REMOVED (Unused variable)
 $n: #efeeee;
 $d: #333;
+
 
 .header {
   position: sticky;
@@ -161,6 +162,8 @@ $d: #333;
   gap: 1rem
 }
 
+// REMOVED: .menu-scroll-wrapper block to reduce bundle size.
+
 .search {
   display: none
 }
@@ -243,20 +246,7 @@ $d: #333;
   align-items: center
 }
 
-.shopping-cart {
-  cursor: pointer
-}
-
-.shopping-cart span {
-  font-size: 1.8rem;
-  color: $p;
-  padding: .5rem;
-  transition: color .2s
-}
-
-.shopping-cart span:hover {
-  color: darken($p, 10%)
-}
+// Removed: .shopping-cart styles
 
 button.login {
   min-width: 95px;
@@ -527,10 +517,6 @@ button.mobile-login:hover {
   }
   .auth-buttons button.login {
     display: none
-  }
-  .shopping-cart span {
-    font-size: 1.5rem;
-    padding: .25rem
   }
 }
 

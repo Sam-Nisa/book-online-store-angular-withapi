@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { HeroBannerComponent } from '../../../components/hero-banner/hero-banner.component';
-import {RouterLink, RouterOutlet} from '@angular/router';
-import { CardComponent } from '../../../components/card/card.component';
-import { CategoryComponent } from '../../../components/category/category.component';
-import { Book } from '../../../types/book.model';
-import { FeedbackReaderComponent } from '../../../components/feedback-reader/feedback-reader.component';
-import { BookService } from '../../../services/book.service';
+import {Component, OnInit} from '@angular/core';
+import {HeroBannerComponent} from '../../../components/hero-banner/hero-banner.component';
+import {RouterOutlet} from '@angular/router';
+import {CardComponent} from '../../../components/card/card.component';
+import {CategoryComponent} from '../../../components/category/category.component';
+import {Book} from '../../../types/book.model';
+import {FeedbackReaderComponent} from '../../../components/feedback-reader/feedback-reader.component';
+import {BookService} from '../../../services/book.service';
 import {LoadingComponent} from '../../../components/loading/loading.component';
 import {NgIf} from '@angular/common';
 
@@ -20,7 +20,6 @@ import {NgIf} from '@angular/common';
     RouterOutlet,
     LoadingComponent,
     NgIf,
-    RouterLink,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
@@ -29,9 +28,10 @@ export class HomeComponent implements OnInit {
 
   newArrival: Book[] = [];
   recommended: Book[] = [];
-  loading =true;
+  loading = true;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService) {
+  }
 
   ngOnInit(): void {
     this.bookService.getBooks().subscribe(

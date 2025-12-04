@@ -5,22 +5,18 @@ import { BookService } from '../../services/book.service';
 import { Book } from '../../types/book.model';
 import { categories } from '../../constants/categories';
 import { LoadingComponent } from '../loading/loading.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, LoadingComponent],
+  imports: [CommonModule, RouterModule, LoadingComponent, TranslateModule],
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-
-  // Current book to display
-  book!: Book | undefined;
-
-  // Category name of the book
+  book: Book | undefined;
   categoryName: string = '';
-
   activeTab: string = 'description';
   quantity: number = 1;
   isInWishlist: boolean = false;
@@ -28,57 +24,62 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private bookService: BookService
+    private bookService: BookService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.fetchBookDetails();
   }
 
-  /** Fetch book details by ID from the route */
   private fetchBookDetails(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.bookService.getBookById(id).subscribe({    //getBookByID call from book.service.ts
+    this.bookService.getBookById(id).subscribe({
       next: (book) => {
         this.book = book;
-
-        // Find category name // component map catID
-        const cat = categories.find(c => c.id === (book.categoryId ?? -1));
-        this.categoryName = cat ? cat.name : 'Unknown';
-
+        this.updateCategoryName(book.categoryId);
         this.loading = false;
       },
       error: () => {
         console.error('Book not found with id:', id);
         this.book = undefined;
-        this.categoryName = '';
         this.loading = false;
       }
     });
   }
 
-  /** Set the active tab in UI */
+  private updateCategoryName(categoryId: number | undefined): void {
+    if (!categoryId) {
+      this.categoryName = this.translate.instant('categories.unknown');
+      return;
+    }
+
+    const category = categories.find(c => c.id === categoryId);
+    if (category) {
+      const categoryKey = category.name.replace('categories.', '');
+      this.categoryName = this.translate.instant(`categories.${categoryKey}`);
+    } else {
+      this.categoryName = this.translate.instant('categories.unknown');
+    }
+  }
+
   setActiveTab(tab: string): void {
     this.activeTab = tab;
   }
 
-  /** Increase the quantity */
   increaseQuantity(): void {
     this.quantity++;
   }
 
-  /** Decrease the quantity (min 1) */
   decreaseQuantity(): void {
     if (this.quantity > 1) this.quantity--;
   }
 
-  /** Add the current book to the cart */
   addToCart(): void {
     console.log('Added to cart:', this.book);
   }
 
-  /** Toggle wishlist status */
   toggleWishlist(): void {
     this.isInWishlist = !this.isInWishlist;
   }

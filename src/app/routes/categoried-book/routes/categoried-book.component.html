@@ -3,7 +3,7 @@
 
   <!-- Loading state -->
   <ng-container *ngIf="loading">
-    <app-loading message="Loading ..."></app-loading>
+    <app-loading [message]="'common.loading' | translate"></app-loading>
   </ng-container>
 
   <!-- Books grid -->
@@ -13,7 +13,7 @@
 
   <!-- Empty / not found state -->
   <div *ngIf="!loading && booksInCategory.length === 0" class="not-found">
-    <h2>No books found in this category</h2>
-    <a routerLink="/home" class="btn-back">Go back to home</a>
+    <h2>{{ 'categories.no_books' | translate }}</h2>
+    <a routerLink="/home" class="btn-back">{{ 'common.back_to_home' | translate }}</a>
   </div>
 </div>

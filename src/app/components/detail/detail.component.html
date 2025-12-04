@@ -1,11 +1,10 @@
-
-<!--Loading Book-->
-<app-loading *ngIf="loading" message="Loading ..."></app-loading>
+<!-- Loading Book -->
+<app-loading *ngIf="loading" [message]="'common.loading' | translate"></app-loading>
 
 <main class="container" *ngIf="book; else loadingOrNotFound">
   <!-- Breadcrumbs -->
   <div class="breadcrumbs">
-    <a [routerLink]="'/'" class="breadcrumb-link">Home</a>
+    <a [routerLink]="'/'" class="breadcrumb-link">{{ 'common.home' | translate }}</a>
     <span class="breadcrumb-separator">/</span>
     <a [routerLink]="['/books', book.categoryId]" class="breadcrumb-link">{{ categoryName }}</a>
     <span class="breadcrumb-current">{{ book.title }}</span>
@@ -13,7 +12,6 @@
 
   <!-- Product Section -->
   <section class="product-section">
-
     <!-- Book Cover -->
     <div class="book-cover-wrapper">
       <div class="book-cover" [style.background-image]="'url(' + book.images + ')'"></div>
@@ -23,9 +21,9 @@
     <div class="book-details">
       <h1 class="book-title">{{ book.title }}</h1>
       <h2 class="book-author">
-        by {{ book.authorName }}
+        {{ 'common.by' | translate }} {{ book.authorName }}
       </h2>
-      <h2 class="book-author">Languages: {{ book.languages }}</h2>
+      <h2 class="book-author">{{ 'common.languages' | translate }}: {{ book.languages }}</h2>
 
       <!-- Description -->
       <p class="book-description">
@@ -39,7 +37,6 @@
 
       <!-- Actions -->
       <div class="actions-wrapper">
-
         <!-- Quantity Selector -->
         <div class="quantity-selector">
           <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
@@ -50,7 +47,7 @@
         <!-- Add to Cart -->
         <button class="btn-add-cart" (click)="addToCart()">
           <span class="material-symbols-outlined">add_shopping_cart</span>
-          Add to Cart
+          {{ 'product.add_to_cart' | translate }}
         </button>
 
         <!-- Wishlist -->
@@ -59,19 +56,28 @@
             {{ isInWishlist ? 'favorite' : 'favorite_border' }}
           </span>
         </button>
-
       </div>
     </div>
-
   </section>
 
   <!-- Tabs Section -->
   <section class="tabs-section">
     <nav class="tabs-nav">
-      <a class="tab-link" [class.active]="activeTab === 'description'"
-         (click)="setActiveTab('description')">Description</a>
-      <a class="tab-link" [class.active]="activeTab === 'details'" (click)="setActiveTab('details')">Product Details</a>
-      <a class="tab-link" [class.active]="activeTab === 'author'" (click)="setActiveTab('author')">About the Author</a>
+      <a class="tab-link"
+         [class.active]="activeTab === 'description'"
+         (click)="setActiveTab('description')">
+        {{ 'tabs.description' | translate }}
+      </a>
+      <a class="tab-link"
+         [class.active]="activeTab === 'details'"
+         (click)="setActiveTab('details')">
+        {{ 'tabs.details' | translate }}
+      </a>
+      <a class="tab-link"
+         [class.active]="activeTab === 'author'"
+         (click)="setActiveTab('author')">
+        {{ 'tabs.author' | translate }}
+      </a>
     </nav>
 
     <!-- Description Tab -->
@@ -88,10 +94,10 @@
     <div class="tab-content" *ngIf="activeTab === 'author'">
       <div *ngFor="let a of book.authors" class="author-box">
         <h3>{{ a.name }}</h3>
-        <p *ngIf="a.birth_year">Born: {{ a.birth_year }}</p>
-        <p *ngIf="a.death_year">Died: {{ a.death_year }}</p>
+        <p *ngIf="a.birth_year">{{ 'author.born' | translate }}: {{ a.birth_year }}</p>
+        <p *ngIf="a.death_year">{{ 'author.died' | translate }}: {{ a.death_year }}</p>
         <p *ngIf="!a.birth_year && !a.death_year">
-          No birth/death info available.
+          {{ 'author.no_info' | translate }}
         </p>
       </div>
     </div>
@@ -99,9 +105,8 @@
 </main>
 
 <ng-template #loadingOrNotFound>
-
   <div *ngIf="!loading && !book" class="not-found">
-    <h2>Book not found</h2>
-    <a routerLink="/home" class="btn-back">Go back to home</a>
+    <h2>{{ 'errors.book_not_found' | translate }}</h2>
+    <a routerLink="/home" class="btn-back">{{ 'common.back_to_home' | translate }}</a>
   </div>
 </ng-template>

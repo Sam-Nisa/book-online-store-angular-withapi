@@ -6,9 +6,7 @@
       [routerLink]="'/category/' + category.id"
     >
       <span class="material-symbols-outlined">{{ category.icon }}</span>
-      <p>{{ category.name }}</p>
+      <p>{{ category.name | translate }}</p>
     </div>
   </div>
 </section>
-
-

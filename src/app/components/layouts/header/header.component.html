@@ -8,24 +8,31 @@
       </a>
 
       <nav class="nav-links d-none d-md-flex">
-        <!-- Dropdown for Browse Categories -->
+        <!-- Desktop Dropdown for Categories -->
         <div class="dropdown" [class.open]="isDropdownOpen">
           <div class="dropdown-trigger" (click)="toggleDropdown()">
-            Browse Categories
+            {{ 'navbar.browse-categories' | translate }}
             <span class="material-symbols-outlined dropdown-icon">expand_more</span>
           </div>
-
           <div class="dropdown-menu">
             <ng-container *ngFor="let category of categories">
               <button class="dropdown-link" (click)="goToCategory(category.id)">
                 <span class="material-symbols-outlined category-icon">{{ category.icon }}</span>
-                {{ category.name }}
+                {{ category.name | translate }}
               </button>
             </ng-container>
           </div>
         </div>
-        <a [routerLink]="'/bestseller'" routerLinkActive="active">Bestsellers</a>
-        <a [routerLink]="'/about-us'" routerLinkActive="active">About Us</a>
+
+        <!-- Dynamic menu items -->
+        <ng-container *ngFor="let menu of menus">
+          <a *ngIf="menu.route !== 'category'"
+             [routerLink]="'/' + menu.route"
+             routerLinkActive="active"
+             (click)="isMobileMenuOpen = false">
+            {{ menu.title | translate }}
+          </a>
+        </ng-container>
       </nav>
     </div>
 
@@ -37,25 +44,35 @@
         </div>
         <input
           type="text"
-          placeholder="Search books..."
+          [placeholder]="'navbar.search' | translate"
           [(ngModel)]="searchQuery"
           (keypress)="onSearchKeyPress($event)"
         />
       </div>
 
       <div class="auth-buttons">
-        <div class="shopping-cart">
-          <span class="material-symbols-outlined">shopping_cart</span>
-        </div>
-
-        <button class="login" [routerLink]="'/auth/login'">Login</button>
+        <button class="login" [routerLink]="'/auth/login'">{{ 'navbar.log_in' | translate }}</button>
         <!-- Dark Mode Toggle -->
         <button class="mode-toggle" (click)="toggleTheme()">
-  <span class="material-symbols-outlined">
-    {{ isDarkMode ? 'dark_mode' : 'light_mode' }}
-  </span>
+          <span class="material-symbols-outlined">
+            {{ isDarkMode ? 'dark_mode' : 'light_mode' }}
+          </span>
         </button>
 
+        <button mat-button [matMenuTriggerFor]="languageMenu" class="lang-btn d-flex align-items-center gap-1 rounded-pill border px-2 py-1">
+          <img [src]="'/icons/' + currentLang() + '.png'" [alt]="currentLang()" width="20" height="20" class="rounded-circle"/>
+          <span class="d-none d-sm-inline small fw-medium">{{ currentLang() | uppercase }}</span>
+          <mat-icon class="icon-sm">arrow_drop_down</mat-icon>
+        </button>
+
+        <mat-menu #languageMenu="matMenu" xPosition="before">
+          <button  (click)="switchLanguage('en')">
+            <img src="/icons/en.png" alt="en" width="20" height="20" class="me-2 rounded-circle"/> English
+          </button>
+          <button  (click)="switchLanguage('km')">
+            <img src="/icons/km.png" alt="km" width="20" height="20" class="me-2 rounded-circle"/> ភាសាខ្មែរ
+          </button>
+        </mat-menu>
       </div>
 
       <!-- Mobile Menu Toggle -->
@@ -73,7 +90,7 @@
       </div>
       <input
         type="text"
-        placeholder="Search books..."
+        [placeholder]="'navbar.search' | translate"
         [(ngModel)]="ipadSearchQuery"
         (keypress)="onIpadSearchKeyPress($event)"
       />
@@ -98,21 +115,29 @@
     <!-- Mobile Dropdown -->
     <div class="mobile-dropdown" [class.open]="isMobileDropdownOpen">
       <div class="mobile-dropdown-trigger" (click)="toggleMobileDropdown()">
-        Browse Categories
-        <span class="material-symbols-outlined">expand_more</span>
+        {{ 'navbar.browse-categories' | translate }}
+        <span class="material-symbols-outlined">{{ isMobileDropdownOpen ? 'expand_less' : 'expand_more' }}</span>
       </div>
       <div class="mobile-dropdown-menu" [class.open]="isMobileDropdownOpen">
         <ng-container *ngFor="let category of categories">
-          <button class="mobile-dropdown-link" (click)="goToCategory(category.id)">
+          <button class="mobile-dropdown-link" (click)="goToCategory(category.id); toggleMobileDropdown()">
             <span class="material-symbols-outlined category-icon">{{ category.icon }}</span>
-            {{ category.name }}
+            {{ category.name | translate }}
           </button>
         </ng-container>
       </div>
     </div>
 
-    <a [routerLink]="'/bestseller'" routerLinkActive="active" class="mobile-nav-link" (click)="toggleMobileMenu()">Bestsellers</a>
-    <a [routerLink]="'/about-us'" routerLinkActive="active" class="mobile-nav-link" (click)="toggleMobileMenu()">About Us</a>
+    <!-- Mobile Menu Items -->
+    <ng-container *ngFor="let menu of menus">
+      <a *ngIf="menu.route !== 'category'"
+         [routerLink]="'/' + menu.route"
+         routerLinkActive="active"
+         class="mobile-nav-link"
+         (click)="toggleMobileMenu()">
+        {{ menu.title | translate }}
+      </a>
+    </ng-container>
 
     <!-- Mobile Actions -->
     <div class="mobile-actions">
@@ -122,12 +147,14 @@
         </div>
         <input
           type="text"
-          placeholder="Search books..."
+          [placeholder]="'navbar.search' | translate"
           [(ngModel)]="mobileSearchQuery"
           (keypress)="onMobileSearchKeyPress($event)"
         />
       </div>
-      <button class="mobile-login" [routerLink]="'/auth/login'" (click)="toggleMobileMenu()">Login</button>
+      <button class="mobile-login" [routerLink]="'/auth/login'" (click)="toggleMobileMenu()">
+        {{ 'navbar.log_in' | translate }}
+      </button>
     </div>
   </nav>
 </header>
