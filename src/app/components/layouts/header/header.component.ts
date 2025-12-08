@@ -1,11 +1,10 @@
 import {Component, HostListener, Inject, Injector, PLATFORM_ID, signal} from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {categories} from '../../../constants/categories';
 import {MenuItemModel} from '../../../types/menu-item';
-import { TranslateService} from '@ngx-translate/core';
 import {LanguageEnum} from '../../../types/enums/language.enum';
 import {AuthService} from '../../../services/auth.service';
 import {MatIcon} from '@angular/material/icon';
@@ -26,6 +25,7 @@ const MENUS: MenuItemModel[] = [
     route: 'about-us'
   }
 ]
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -62,7 +62,6 @@ class HeaderComponent {
   activeMenuRoute = '';
   user = signal<any>(null);
   currentLang = signal<string>(LanguageEnum.EN);
-
 
   constructor(injector: Injector,
               private authService: AuthService,
@@ -115,7 +114,7 @@ class HeaderComponent {
   onSearch() {
     if (this.searchQuery.trim()) {
       this.router.navigate(['/search'], {
-        queryParams: { q: this.searchQuery.trim() }
+        queryParams: {q: this.searchQuery.trim()}
       });
       this.searchQuery = '';
     }
@@ -125,7 +124,7 @@ class HeaderComponent {
   onMobileSearch() {
     if (this.mobileSearchQuery.trim()) {
       this.router.navigate(['/search'], {
-        queryParams: { q: this.mobileSearchQuery.trim() }
+        queryParams: {q: this.mobileSearchQuery.trim()}
       });
       this.mobileSearchQuery = '';
       this.toggleMobileMenu();
@@ -136,7 +135,7 @@ class HeaderComponent {
   onIpadSearch() {
     if (this.ipadSearchQuery.trim()) {
       this.router.navigate(['/search'], {
-        queryParams: { q: this.ipadSearchQuery.trim() }
+        queryParams: {q: this.ipadSearchQuery.trim()}
       });
       this.ipadSearchQuery = '';
     }

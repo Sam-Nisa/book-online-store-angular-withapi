@@ -24,7 +24,7 @@
     <div class="footer-column">
       <h3>{{ 'footer.contact_us' | translate }}</h3>
       <div class="contact-info">
-        <p>{{ 'footer.phone' | translate }}: <a [href]="'tel:' + phoneNumber">{{ phoneNumber }}</a></p>
+        <p>{{ 'footer.phone' | translate }}: <a class="text-white" [href]="'tel:' + phoneNumber">{{ phoneNumber }}</a></p>
       </div>
       <div class="social-icons">
         <ng-container *ngFor="let social of socials">

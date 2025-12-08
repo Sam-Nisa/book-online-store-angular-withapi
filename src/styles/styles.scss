@@ -423,9 +423,7 @@ body.dark-mode .px-1 {
    ============================ */
 body.dark-mode .footer .social-icons a,
 body.dark-mode .footer .social-icons img {
-  color: #13a4ec !important; /* Bright blue for icons */
-  filter: brightness(1.2) !important; /* Makes image icons pop */
-  transition: color 0.3s ease, filter 0.3s ease;
+  color: white !important; /* Bright blue for icons */
 }
 
 body.dark-mode .footer .social-icons a:hover,
@@ -454,6 +452,12 @@ body.dark-mode .footer a:hover {
 body.dark-mode .footer-bottom {
   color: #ccc !important;
 }
+
+body.dark-mode .footer-column a.phone-link {
+  color: #fff !important;
+}
+
+
 
 body.dark-mode .footer .social-icons a img {
   filter: brightness(0) invert(1); /* make icons white */
