@@ -423,12 +423,11 @@ body.dark-mode .px-1 {
    ============================ */
 body.dark-mode .footer .social-icons a,
 body.dark-mode .footer .social-icons img {
-  color: white !important; /* Bright blue for icons */
+  color: blue !important; /* Bright blue for icons */
 }
 
 body.dark-mode .footer .social-icons a:hover,
 body.dark-mode .footer .social-icons img:hover {
-  color: #0a74da !important; /* Slightly darker blue on hover */
   filter: brightness(1.4) !important;
 }
 
@@ -460,7 +459,7 @@ body.dark-mode .footer-column a.phone-link {
 
 
 body.dark-mode .footer .social-icons a img {
-  filter: brightness(0) invert(1); /* make icons white */
+  color: #0A74DA !important;
 }
 
 /* ============================
