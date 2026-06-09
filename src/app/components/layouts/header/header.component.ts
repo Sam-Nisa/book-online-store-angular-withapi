@@ -73,7 +73,7 @@ class HeaderComponent {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
     // Get saved language or use browser language or default to English
-    let savedLang = this.isBrowser ? localStorage.getItem('userLanguage') : null;
+    let savedLang = this.isBrowser ? (typeof localStorage !== 'undefined' ? localStorage.getItem('userLanguage') : null) : null;
     const browserLang = this.translateService.getBrowserLang();
     const defaultLang = savedLang || (browserLang && ['en', 'km'].includes(browserLang) ? browserLang : 'en');
 
@@ -176,10 +176,12 @@ class HeaderComponent {
   isDarkMode = false;
 
   ngOnInit() {
-    const savedMode = localStorage.getItem('theme');
-    if (savedMode === 'dark') {
-      this.isDarkMode = true;
-      document.body.classList.add('dark-mode');
+    if (this.isBrowser) {
+      const savedMode = localStorage.getItem('theme');
+      if (savedMode === 'dark') {
+        this.isDarkMode = true;
+        document.body.classList.add('dark-mode');
+      }
     }
   }
 
@@ -188,10 +190,14 @@ class HeaderComponent {
 
     if (this.isDarkMode) {
       document.body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
+      if (this.isBrowser) {
+        localStorage.setItem('theme', 'dark');
+      }
     } else {
       document.body.classList.remove('dark-mode');
-      localStorage.setItem('theme', 'light');
+      if (this.isBrowser) {
+        localStorage.setItem('theme', 'light');
+      }
     }
   }
 

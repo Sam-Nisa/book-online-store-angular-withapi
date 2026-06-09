@@ -5,6 +5,7 @@ import {MissionValuesComponent} from '../../../components/mission-values/mission
 import {HistoryTimelineComponent} from '../../../components/history-timeline/history-timeline.component';
 import {MeetTheTeamComponent} from '../../../components/meet-the-team/meet-the-team.component';
 import {CtaSectionComponent} from '../../../components/cta-section/cta-section.component';
+import {TestDragDropComponentComponent} from '../../../components/test-drag-drop-component/test-drag-drop-component.component';
 
 @Component({
   selector: 'app-about-us',
@@ -14,7 +15,8 @@ import {CtaSectionComponent} from '../../../components/cta-section/cta-section.c
     HistoryTimelineComponent,
     MeetTheTeamComponent,
     CtaSectionComponent,
-    RouterOutlet
+    RouterOutlet,
+    TestDragDropComponentComponent,
   ],
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.scss'

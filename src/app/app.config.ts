@@ -8,7 +8,7 @@ import {
   withFetch,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideTranslateService, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
@@ -28,8 +28,8 @@ export const appConfig: ApplicationConfig = {
     )),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    provideAnimationsAsync(),
-    provideClientHydration(),
+    provideAnimations(),
+    provideClientHydration(withEventReplay()),
     provideTranslateService({
       defaultLanguage: 'km',
       loader: {
@@ -37,6 +37,6 @@ export const appConfig: ApplicationConfig = {
         useFactory: httpLoaderFactory,
         deps: [HttpClient],
       },
-    }), provideClientHydration(withEventReplay()),
+    }),
   ],
 };
